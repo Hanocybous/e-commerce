@@ -1,7 +1,8 @@
-package com.hanocybous.ecommercesystem.service.order;
+package com.hanocybous.ecommercesystem.service.order.orderitemimpl;
 
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import com.hanocybous.ecommercesystem.repository.order.OrderItemRepository;
+import com.hanocybous.ecommercesystem.service.order.IOrderItemService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.util.List;
 @Repository
 @Getter
 @SuppressWarnings("unused")
-public class OrderItemService implements IOrderItem {
+public class OrderItemService implements IOrderItemService {
 
     private final OrderItemRepository orderItemRepository;
 

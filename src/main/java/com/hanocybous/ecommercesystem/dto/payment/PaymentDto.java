@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.payment;
 
 import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentStatus;

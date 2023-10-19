@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.repository;
+package com.hanocybous.ecommercesystem.repository.cart;
 
 import com.hanocybous.ecommercesystem.dto.cart.CartDto;
 import com.hanocybous.ecommercesystem.entity.cart.Cart;
@@ -146,4 +146,54 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
                             @Param("totalAmount") Double totalAmount,
                             @Param("userId") Long userId);
 
+    // update a cart by product id
+    @Modifying
+    @Query(value =
+            "UPDATE cart " +
+            "SET total_discount = ?4, " +
+            "total_shipping = ?5, " +
+            "total_amount = ?6 " +
+            "WHERE product_id = ?7", nativeQuery = true)
+    void updateCartByProductId(@Param("totalDiscount") Double totalDiscount,
+                               @Param("totalShipping") Double totalShipping,
+                               @Param("totalAmount") Double totalAmount,
+                               @Param("productId") Long productId);
+
+    // update a cart by user id and product id and quantity
+    @Modifying
+    @Query(value =
+            "UPDATE cart " +
+            "SET quantity = ?4 " +
+            "WHERE user_id = ?5 " +
+            "AND product_id = ?6", nativeQuery = true)
+    void updateCartByUserIdAndProductIdAndQuantity(@Param("quantity") Integer quantity,
+                                                   @Param("userId") Long userId,
+                                                   @Param("productId") Long productId);
+
+    // get cart by user id and product id and quantity
+    @Query(value =
+            "SELECT * " +
+            "FROM cart " +
+            "WHERE user_id = ?1 " +
+            "AND product_id = ?2 " +
+            "AND quantity = ?3", nativeQuery = true)
+    List<CartDto> getCartByUserIdAndProductIdAndQuantity(Long userId, Long productId, Integer quantity);
+
+    // update a cart by product id and user id
+    @Modifying
+    @Query(value =
+            "UPDATE cart " +
+            "SET quantity = ?3 " +
+            "WHERE product_id = ?1 " +
+            "AND user_id = ?2", nativeQuery = true)
+    void updateCartByProductIdAndUserId(Long productId, Long userId, Integer quantity);
+
+    // delete cart by product id and user id
+    @Modifying
+    @Query(value =
+            "DELETE " +
+            "FROM cart " +
+            "WHERE product_id = ?1 " +
+            "AND user_id = ?2", nativeQuery = true)
+    void deleteCartByProductIdAndUserId(Long productId, Long userId);
 }

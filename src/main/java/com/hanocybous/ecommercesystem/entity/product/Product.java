@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.entity;
+package com.hanocybous.ecommercesystem.entity.product;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,8 +33,6 @@ public final class Product {
     private double totalDiscount;
     @Transient
     private double totalTax;
-    @Transient
-    private double totalShipping;
     @Transient
     private double totalAmount;
 
@@ -93,8 +91,7 @@ public final class Product {
         return
                 (getPrice() * getQuantity())
                         - getTotalDiscount()
-                        + getTotalTax()
-                        + getTotalShipping();
+                        + getTotalTax();
     }
 
     @Override
@@ -110,7 +107,6 @@ public final class Product {
                 ", totalPrice=" + totalPrice +
                 ", totalDiscount=" + totalDiscount +
                 ", totalTax=" + totalTax +
-                ", totalShipping=" + totalShipping +
                 ", totalAmount=" + totalAmount +
                 '}';
     }

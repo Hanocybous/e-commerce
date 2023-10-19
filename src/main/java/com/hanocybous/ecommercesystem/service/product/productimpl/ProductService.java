@@ -1,7 +1,8 @@
-package com.hanocybous.ecommercesystem.service.product;
+package com.hanocybous.ecommercesystem.service.product.productimpl;
 
 import com.hanocybous.ecommercesystem.dto.product.ProductDto;
 import com.hanocybous.ecommercesystem.repository.product.ProductRepository;
+import com.hanocybous.ecommercesystem.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -95,5 +96,97 @@ public class ProductService implements IProductService {
         }
         return productRepository.getProductsByQuantityRange(minQuantity, maxQuantity);
     }
+
+    public List<ProductDto> getAllProductsSortedByPrice(Double price) {
+        if (price == null) {
+            return Collections.emptyList();
+        }
+        return productRepository.getAllProductsSortedByPrice(price);
+    }
+
+    public List<ProductDto> getAllProductsSortedByQuantity(Integer quantity) {
+        if (quantity == null) {
+            return Collections.emptyList();
+        }
+        return productRepository.getAllProductsSortedByQuantity(quantity);
+    }
+
+    public List<ProductDto> getAllProductsSortedByName(String name) {
+        if (name == null) {
+            return Collections.emptyList();
+        }
+        return productRepository.getAllProductsSortedByName(name);
+    }
+
+    public List<ProductDto> getAllProductsSortedByCategory(String category) {
+        if (category == null) {
+            return Collections.emptyList();
+        }
+        return productRepository.getAllProductsSortedByCategory(category);
+    }
+
+    public List<ProductDto> getAllProductsSortedByPriceRange(Double minPrice, Double maxPrice) {
+        if (minPrice == null || maxPrice == null) {
+            return Collections.emptyList();
+        }
+        return productRepository.getAllProductsSortedByPriceRange(minPrice, maxPrice);
+    }
+
+    public void deleteProductById(Long id) {
+        if (id == null) {
+            return;
+        }
+        productRepository.deleteById(id);
+    }
+
+    public void deleteProductByName(String name) {
+        if (name == null) {
+            return;
+        }
+        productRepository.deleteProductByName(name);
+    }
+
+    public void deleteProductByCategory(String category) {
+        if (category == null) {
+            return;
+        }
+        productRepository.deleteProductByCategory(category);
+    }
+
+    public void deleteProductByPrice(Double price) {
+        if (price == null) {
+            return;
+        }
+        productRepository.deleteProductByPrice(price);
+    }
+
+    public void deleteProductByQuantity(Integer quantity) {
+        if (quantity == null) {
+            return;
+        }
+        productRepository.deleteProductByQuantity(quantity);
+    }
+
+    public void updateProductById(Long id, ProductDto productDto) {
+        if (id == null || productDto == null) {
+            return;
+        }
+        productRepository.updateProductById(id, productDto);
+    }
+
+    public void updateProductByName(String name, ProductDto productDto) {
+        if (name == null || productDto == null) {
+            return;
+        }
+        productRepository.updateProductByName(name, productDto);
+    }
+
+    public void updateProductByCategory(String category, ProductDto productDto) {
+        if (category == null || productDto == null) {
+            return;
+        }
+        productRepository.updateProductByCategory(category, productDto);
+    }
+
 
 }

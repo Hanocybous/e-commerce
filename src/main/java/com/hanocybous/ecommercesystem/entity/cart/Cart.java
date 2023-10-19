@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.entity;
+package com.hanocybous.ecommercesystem.entity.cart;
 
+import com.hanocybous.ecommercesystem.entity.product.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,10 +23,11 @@ public final class Cart {
     private Long id;
 
     @OneToMany
+    @JoinColumn(name = "cart_id")
     private Collection<Product> products;
+    private Long userId;
     private Double totalPrice;
     private Double totalDiscount;
-    private Double totalTax;
     private Double totalShipping;
     private Double totalAmount;
 
@@ -79,18 +81,11 @@ public final class Cart {
                 .sum();
     }
 
-    private double calculateTotalShipping() {
-        return products.stream()
-                .mapToDouble(Product::getTotalShipping)
-                .sum();
-    }
-
     public void calculateTotalAmount() {
         totalAmount =
                 calculateTotalPrice()
                 + calculateTotalDiscount()
-                + calculateTotalTax()
-                + calculateTotalShipping();
+                + calculateTotalTax();
     }
 
     @Override
@@ -100,7 +95,6 @@ public final class Cart {
                 ", products=" + products +
                 ", totalPrice=" + totalPrice +
                 ", totalDiscount=" + totalDiscount +
-                ", totalTax=" + totalTax +
                 ", totalShipping=" + totalShipping +
                 ", totalAmount=" + totalAmount +
                 '}';
@@ -129,5 +123,5 @@ public final class Cart {
     public int hashCode() {
         return products.hashCode();
     }
-    
+
 }

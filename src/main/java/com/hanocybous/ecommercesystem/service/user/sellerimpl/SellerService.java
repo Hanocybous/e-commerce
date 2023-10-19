@@ -1,7 +1,8 @@
-package com.hanocybous.ecommercesystem.service.user;
+package com.hanocybous.ecommercesystem.service.user.sellerimpl;
 
 import com.hanocybous.ecommercesystem.dto.user.SellerDto;
 import com.hanocybous.ecommercesystem.repository.user.SellerRepository;
+import com.hanocybous.ecommercesystem.service.user.ISellerService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

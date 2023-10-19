@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.order;
 
+import com.hanocybous.ecommercesystem.entity.order.Order;
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import com.hanocybous.ecommercesystem.entity.order.OrderStatus;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
@@ -56,6 +57,19 @@ public record OrderDto(
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", totalAmount=" + totalAmount +
                 '}';
+    }
+
+    @Contract(" -> new")
+    public @NotNull Order toOrder() {
+        return new Order(
+                id,
+                orderItems,
+                orderDate,
+                status,
+                shippingAddress,
+                paymentMethod,
+                totalAmount
+        );
     }
 
 }

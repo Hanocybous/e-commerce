@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.order;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

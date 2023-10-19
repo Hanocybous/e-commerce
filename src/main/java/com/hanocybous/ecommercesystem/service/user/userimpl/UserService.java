@@ -1,7 +1,8 @@
-package com.hanocybous.ecommercesystem.service.user;
+package com.hanocybous.ecommercesystem.service.user.userimpl;
 
 import com.hanocybous.ecommercesystem.dto.user.UserDto;
 import com.hanocybous.ecommercesystem.repository.user.UserRepository;
+import com.hanocybous.ecommercesystem.service.user.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

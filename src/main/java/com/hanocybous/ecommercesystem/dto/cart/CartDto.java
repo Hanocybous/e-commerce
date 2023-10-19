@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.cart;
 
 import com.hanocybous.ecommercesystem.entity.product.Product;
 import org.jetbrains.annotations.Contract;

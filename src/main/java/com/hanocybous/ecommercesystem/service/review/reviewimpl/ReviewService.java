@@ -1,7 +1,8 @@
-package com.hanocybous.ecommercesystem.service.review;
+package com.hanocybous.ecommercesystem.service.review.reviewimpl;
 
 import com.hanocybous.ecommercesystem.dto.review.ReviewDto;
 import com.hanocybous.ecommercesystem.repository.review.ReviewRepository;
+import com.hanocybous.ecommercesystem.service.review.IReviewService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -187,6 +188,79 @@ public class ReviewService implements IReviewService {
             return Collections.emptyList();
         }
         return reviewRepository.deleteReviewByReviewDateBetween(reviewDateStart,
+                reviewDateEnd);
+    }
+
+    public ReviewDto addReview(ReviewDto reviewDto) {
+        if (reviewDto == null) {
+            return null;
+        }
+        return reviewRepository.addReview(reviewDto);
+    }
+
+    public ReviewDto updateReview(ReviewDto reviewDto) {
+        if (reviewDto == null) {
+            return null;
+        }
+        return reviewRepository.updateReview(reviewDto);
+    }
+
+    public void deleteReview(Long reviewId) {
+        if (reviewId == null) {
+            return;
+        }
+        reviewRepository.deleteReview(reviewId);
+    }
+
+    public void deleteReviewsByProductId(Long productId) {
+        if (productId == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByProductId(productId);
+    }
+
+    public void deleteReviewsByCustomerId(Long customerId) {
+        if (customerId == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByCustomerId(customerId);
+    }
+
+    public void deleteReviewsByTitle(String title) {
+        if (title == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByTitle(title);
+    }
+
+    public void deleteReviewsByRating(Integer rating) {
+        if (rating == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByRating(rating);
+    }
+
+    public void deleteReviewsByComment(String comment) {
+        if (comment == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByComment(comment);
+    }
+
+    public void deleteReviewsByReviewDate(LocalDateTime reviewDate) {
+        if (reviewDate == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByReviewDate(reviewDate);
+    }
+
+
+    public void deleteReviewsByReviewDateBetween(LocalDateTime reviewDateStart, LocalDateTime reviewDateEnd) {
+        if (reviewDateStart == null ||
+                reviewDateEnd == null) {
+            return;
+        }
+        reviewRepository.deleteReviewsByReviewDateBetween(reviewDateStart,
                 reviewDateEnd);
     }
 

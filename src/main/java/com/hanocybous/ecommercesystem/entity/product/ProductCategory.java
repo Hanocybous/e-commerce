@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.entity;
+package com.hanocybous.ecommercesystem.entity.product;
 
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;

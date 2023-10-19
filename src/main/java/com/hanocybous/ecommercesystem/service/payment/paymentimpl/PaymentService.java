@@ -1,17 +1,20 @@
-package com.hanocybous.ecommercesystem.service.payment;
+package com.hanocybous.ecommercesystem.service.payment.paymentimpl;
 
 import com.hanocybous.ecommercesystem.dto.payment.PaymentDto;
 import com.hanocybous.ecommercesystem.entity.payment.Payment;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentStatus;
 import com.hanocybous.ecommercesystem.repository.payment.PaymentRepository;
+import com.hanocybous.ecommercesystem.service.payment.IPaymentService;
 import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Getter
@@ -215,6 +218,57 @@ public class PaymentService implements IPaymentService {
         LocalDateTime startDateTime = LocalDateTime.parse(startDate);
         LocalDateTime endDateTime = LocalDateTime.parse(endDate);
         return paymentRepository.getPaymentsBetweenTwoDatesByPaymentMethod(startDateTime, endDateTime, paymentMethod);
+    }
+
+    public List<PaymentDto> getPaymentByPaymentMethod(@NotNull String paymentMethod) {
+        if (paymentMethod.equals("ALL")) {
+            return paymentRepository.findAllPayments();
+        }
+        return paymentRepository.getPaymentByPaymentMethod(paymentMethod);
+    }
+
+    public List<PaymentDto> getPaymentByPaymentStatus(@NotNull String paymentStatus) {
+        if (paymentStatus.equals("ALL") || paymentStatus.isEmpty()) {
+            return paymentRepository.findAllPayments();
+        }
+        return paymentRepository.getPaymentByPaymentStatus(paymentStatus);
+    }
+
+    public List<PaymentDto> getPaymentByPaymentMethodAndPaymentStatus(@NotNull String paymentMethod,
+                                                                      String paymentStatus) {
+        if (paymentMethod.equals("ALL") &&
+                paymentStatus.equals("ALL") ||
+                paymentMethod.isEmpty() &&
+                        paymentStatus.isEmpty()) {
+            return paymentRepository.findAllPayments();
+        }
+        if (paymentMethod.equals(Objects.requireNonNull(PaymentStatus.fromString(paymentStatus)).toString())) {
+            return paymentRepository.getPaymentByPaymentStatus(paymentStatus);
+        }
+        if (paymentStatus.equals(Objects.requireNonNull(PaymentMethod.getPaymentMethod(paymentMethod)).toString())) {
+            return paymentRepository.getPaymentByPaymentMethod(paymentMethod);
+        }
+        return paymentRepository.getPaymentByPaymentMethodAndPaymentStatus(
+                paymentMethod,
+                paymentStatus);
+    }
+
+    public List<PaymentDto> getPaymentByOrderId(Long orderId) {
+        if (orderId == null) {
+            return paymentRepository.findAllPayments();
+        }
+        return paymentRepository.getPaymentByOrderId(orderId);
+    }
+
+    public void deletePaymentByPaymentStatus(@NotNull String paymentStatus) {
+        if (paymentStatus.equals("ALL") || paymentStatus.isEmpty()) {
+            paymentRepository.deleteAll();
+        }
+        paymentRepository.deletePaymentByPaymentStatus(paymentStatus);
+    }
+
+    public List<PaymentDto> findAllPayments() {
+        return paymentRepository.findAllPayments();
     }
 
 }

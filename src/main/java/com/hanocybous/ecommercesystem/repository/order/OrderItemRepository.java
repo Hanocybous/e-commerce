@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.repository;
+package com.hanocybous.ecommercesystem.repository.order;
 
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +14,7 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
     @Query(value = 
             "SELECT SUM(total) F" +
-            "ROM order_item " +
+            "FROM order_item " +
             "WHERE order_id = ?1", nativeQuery = true)
     Double getTotalByOrderId(Long orderId);
 

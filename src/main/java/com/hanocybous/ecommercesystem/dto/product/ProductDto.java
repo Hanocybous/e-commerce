@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.product;
 
 import java.util.Objects;
 

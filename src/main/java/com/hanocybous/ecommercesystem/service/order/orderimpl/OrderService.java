@@ -1,9 +1,10 @@
-package com.hanocybous.ecommercesystem.service.order;
+package com.hanocybous.ecommercesystem.service.order.orderimpl;
 
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
 import com.hanocybous.ecommercesystem.entity.order.Order;
 import com.hanocybous.ecommercesystem.repository.order.OrderRepository;
 import com.hanocybous.ecommercesystem.repository.product.ProductRepository;
+import com.hanocybous.ecommercesystem.service.order.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,14 @@ public class OrderService implements IOrderService {
         this.orderRepository = orderRepository;
     }
 
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+        this.productRepository = null;
+    }
+
     public void addProductToOrder(Long productId) {
         Order order = orderRepository.findById(productId).orElse(new Order());
+        assert productRepository != null;
         productRepository.findById(productId).ifPresent(product -> {
             if (product.getQuantity() > 0) {
                 product.setQuantity(product.getQuantity() - 1);
@@ -37,6 +44,7 @@ public class OrderService implements IOrderService {
     }
 
     public void removeProductFromOrder(Long productId) {
+        assert productRepository != null;
         productRepository.findById(productId).ifPresent(product -> {
             for (int i = 0; i < product.getQuantity(); i++) {
                 product.setQuantity(product.getQuantity() + 1);
@@ -216,4 +224,76 @@ public class OrderService implements IOrderService {
         return orderRepository.getOrderByTotalAmountAndTotalShipping(totalAmount, totalShipping);
     }
 
+    public void getOrderById(Long orderId) {
+        if (orderId == null || orderId < 0) {
+            return;
+        }
+        orderRepository.findById(orderId);
+    }
+
+    public void getOrderByUserIdAndProductId(Long userId, Long productId) {
+        if (userId == null || userId < 0 || productId == null || productId < 0) {
+            return;
+        }
+        orderRepository.getOrderByUserIdAndProductId(userId, productId);
+    }
+
+    public void addOrder(OrderDto orderDto) {
+        if (orderDto == null) {
+            return;
+        }
+        orderRepository.save(orderDto.toOrder());
+    }
+
+    public void deleteOrderById(Long orderId) {
+        if (orderId == null || orderId < 0) {
+            return;
+        }
+        orderRepository.deleteById(orderId);
+    }
+
+    public void deleteOrderByUserId(Long userId) {
+        if (userId == null || userId < 0) {
+            return;
+        }
+        orderRepository.deleteOrderByUserId(userId);
+    }
+
+    public void deleteOrderByProductId(Long productId) {
+        if (productId == null || productId < 0) {
+            return;
+        }
+        orderRepository.deleteOrderByProductId(productId);
+    }
+
+    public void deleteOrderByUserIdAndProductId(Long userId, Long productId) {
+        if (userId == null || userId < 0 || productId == null || productId < 0) {
+            return;
+        }
+        orderRepository.deleteOrderByUserIdAndProductId(userId, productId);
+    }
+
+    public void deleteProductFromOrder(Long orderId) {
+        if (orderId == null || orderId < 0) {
+            return;
+        }
+        orderRepository.findById(orderId).ifPresent(order -> {
+            order.getOrderItems().clear();
+            orderRepository.save(order);
+        });
+    }
+
+    public void deleteAllOrdersByUserId(Long userId) {
+        if (userId == null || userId < 0) {
+            return;
+        }
+        orderRepository.deleteAllOrdersByUserId(userId);
+    }
+
+    public void deleteAllOrdersByProductId(Long productId) {
+        if (productId == null || productId < 0) {
+            return;
+        }
+        orderRepository.deleteAllOrdersByProductId(productId);
+    }
 }

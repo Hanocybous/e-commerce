@@ -1,6 +1,6 @@
-package com.hanocybous.ecommercesystem.repository;
+package com.hanocybous.ecommercesystem.repository.order;
 
-import com.hanocybous.ecommercesystem.dto.OrderDto;
+import com.hanocybous.ecommercesystem.dto.order.OrderDto;
 import com.hanocybous.ecommercesystem.entity.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -245,7 +245,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "UPDATE orders " +
             "SET user_id = :newUserId " +
             "WHERE user_id = :userId", nativeQuery = true)
-    void updateOrderByUserId(@Param("userId") Long userId, @Param("newUserId") Long newUserId);
+    void updateOrderByUserId(@Param("userId") Long userId,
+                             @Param("newUserId") Long newUserId);
 
     // update an order by user id and status
     @Modifying
@@ -259,5 +260,207 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
                                       @Param("status") String status,
                                       @Param("newUserId") Long newUserId,
                                       @Param("newStatus") String newStatus);
+
+    // get order by product id
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId)", nativeQuery = true)
+    List<OrderDto> getOrderByProductId(Long productId);
+
+    // get order by product id and status
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId) " +
+            "AND status = :status", nativeQuery = true)
+    List<OrderDto> getOrderByProductIdAndStatus(@Param("productId") Long productId,
+                                                @Param("status") String status);
+
+    // get order by product id and status and id
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId) " +
+            "AND status = :status " +
+            "AND id = :id", nativeQuery = true)
+    List<OrderDto> getOrderByProductIdAndStatusAndId(@Param("productId") Long productId,
+                                                     @Param("status") String status,
+                                                     @Param("id") Long id);
+
+    // get order by product name
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE name = :productName))", nativeQuery = true)
+    List<OrderDto> getOrderByProductName(@Param("productName") String productName);
+
+    // get order by product name and status
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE name = :productName)) " +
+            "AND status = :status", nativeQuery = true)
+    List<OrderDto> getOrderByProductNameAndStatus(@Param("productName") String productName,
+                                                   @Param("status") String status);
+
+    // get order by product name and status and id
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE name = :productName)) " +
+            "AND status = :status " +
+            "AND id = :id", nativeQuery = true)
+    List<OrderDto> getOrderByProductNameAndStatusAndId(@Param("productName") String productName,
+                                                        @Param("status") String status,
+                                                        @Param("id") Long id);
+
+    // get order by category
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE category = :category))", nativeQuery = true)
+    List<OrderDto> getOrderByCategory(@Param("category") String category);
+
+    // get order by category and status
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE category = :category)) " +
+            "AND status = :status", nativeQuery = true)
+    List<OrderDto> getOrderByCategoryAndStatus(@Param("category") String category,
+                                                @Param("status") String status);
+
+    // get order by category and status and id
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id IN " +
+            "(SELECT id " +
+            "FROM product " +
+            "WHERE category = :category)) " +
+            "AND status = :status " +
+            "AND id = :id", nativeQuery = true)
+    List<OrderDto> getOrderByCategoryAndStatusAndId(@Param("category") String category,
+                                                     @Param("status") String status,
+                                                     @Param("id") Long id);
+
+    // get order by total amount
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE total_amount = :totalAmount", nativeQuery = true)
+    List<OrderDto> getOrderByTotalAmount(@Param("totalAmount") Double totalAmount);
+
+    // get order by total shipping
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE total_shipping = :totalShipping", nativeQuery = true)
+    List<OrderDto> getOrderByTotalShipping(@Param("totalShipping") Double totalShipping);
+
+    // get order by total amount and total shipping
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE total_amount = :totalAmount " +
+            "AND total_shipping = :totalShipping", nativeQuery = true)
+    List<OrderDto> getOrderByTotalAmountAndTotalShipping(@Param("totalAmount") Double totalAmount,
+                                                         @Param("totalShipping") Double totalShipping);
+
+    // get order by user id and product id
+    @Query(value =
+            "SELECT * " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId) " +
+            "AND user_id = :userId", nativeQuery = true)
+    void getOrderByUserIdAndProductId(Long userId, Long productId);
+
+    // delete order by product id
+    @Modifying
+    @Query(value =
+            "DELETE " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId)", nativeQuery = true)
+    void deleteOrderByProductId(Long productId);
+
+    // delete order by user id and product id
+    @Modifying
+    @Query(value =
+            "DELETE " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId) " +
+            "AND user_id = :userId", nativeQuery = true)
+    void deleteOrderByUserIdAndProductId(Long userId, Long productId);
+
+    // delete all orders by user id
+    @Modifying
+    @Query(value =
+            "DELETE " +
+            "FROM orders " +
+            "WHERE user_id = :userId", nativeQuery = true)
+    void deleteAllOrdersByUserId(Long userId);
+
+    // delete all orders by product id
+    @Modifying
+    @Query(value =
+            "DELETE " +
+            "FROM orders " +
+            "WHERE id IN " +
+            "(SELECT order_id " +
+            "FROM order_item " +
+            "WHERE product_id = :productId)", nativeQuery = true)
+    void deleteAllOrdersByProductId(Long productId);
 
 }

@@ -4,7 +4,7 @@ import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 
 import java.util.List;
 
-public interface IOrderItem {
+public interface IOrderItemService {
 
     Double getTotalByOrderId(Long orderId);
 

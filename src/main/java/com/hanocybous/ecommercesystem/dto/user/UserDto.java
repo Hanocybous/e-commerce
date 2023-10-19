@@ -1,4 +1,4 @@
-package com.hanocybous.ecommercesystem.dto;
+package com.hanocybous.ecommercesystem.dto.user;
 
 import com.hanocybous.ecommercesystem.entity.user.UserType;
 import org.jetbrains.annotations.Contract;
