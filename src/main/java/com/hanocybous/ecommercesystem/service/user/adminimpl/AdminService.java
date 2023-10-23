@@ -74,4 +74,33 @@ public class AdminService implements IAdminService {
         adminRepository.updateAdminVerificationToken(id, verificationToken);
     }
 
+    public void updateAdminVerificationTokenByUsername(String username, Long verificationToken) {
+        if (username == null || username.isEmpty()) {
+            return;
+        }
+        if (verificationToken == null || verificationToken == 0 || verificationToken < 0) {
+            return;
+        }
+        adminRepository.updateAdminVerificationTokenByUsername(username, verificationToken);
+    }
+
+    public void updateAdminVerificationTokenByEmail(String email, Long verificationToken) {
+        if (email == null || email.isEmpty()) {
+            return;
+        }
+        if (verificationToken == null || verificationToken == 0 || verificationToken < 0) {
+            return;
+        }
+        adminRepository.updateAdminVerificationTokenByEmail(email, verificationToken);
+    }
+
+    public void updateAdminVerificationToken(String username, Long verificationToken) {
+        if (username == null || username.isEmpty()) {
+            return;
+        }
+        if (verificationToken == null || verificationToken == 0 || verificationToken < 0) {
+            return;
+        }
+        adminRepository.updateAdminVerificationToken(username, verificationToken);
+    }
 }

@@ -52,4 +52,28 @@ public interface AdminRepository extends JpaRepository<Admin, Long> {
             "WHERE id = ?2", nativeQuery = true)
     void updateAdminVerificationToken(Long verificationToken, Long id);
 
+    // update admin verification token by username
+    @Modifying
+    @Query(value =
+            "UPDATE admin " +
+            "SET verification_code = ?1 " +
+            "WHERE username = ?2", nativeQuery = true)
+    void updateAdminVerificationTokenByUsername(String username, Long verificationToken);
+
+    // update admin verification token by email
+    @Modifying
+    @Query(value =
+            "UPDATE admin " +
+            "SET verification_code = ?1 " +
+            "WHERE email = ?2", nativeQuery = true)
+    void updateAdminVerificationTokenByEmail(String email, Long verificationToken);
+
+    // update admin verification token by username
+    @Modifying
+    @Query(value =
+            "UPDATE admin " +
+            "SET verification_code = ?1 " +
+            "WHERE username = ?2", nativeQuery = true)
+    void updateAdminVerificationToken(String username, Long verificationToken);
+
 }

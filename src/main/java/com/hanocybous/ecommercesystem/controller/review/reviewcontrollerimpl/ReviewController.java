@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.controller;
+package com.hanocybous.ecommercesystem.controller.review.reviewcontrollerimpl;
 
+import com.hanocybous.ecommercesystem.controller.review.IReviewController;
 import com.hanocybous.ecommercesystem.dto.review.ReviewDto;
 import com.hanocybous.ecommercesystem.service.review.reviewimpl.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @SuppressWarnings("unused")
 @RequestMapping("/api/v1/review")
-public class ReviewController {
+public class ReviewController implements IReviewController {
 
     private final ReviewService reviewService;
 

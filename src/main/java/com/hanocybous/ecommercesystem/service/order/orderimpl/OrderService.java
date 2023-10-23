@@ -296,4 +296,25 @@ public class OrderService implements IOrderService {
         }
         orderRepository.deleteAllOrdersByProductId(productId);
     }
+
+    public void updateOrder(Long orderId, String productName, String category) {
+        if (orderId == null ||
+                orderId < 0 ||
+                productName == null ||
+                productName.isEmpty() ||
+                category == null ||
+                category.isEmpty()) {
+            return;
+        }
+        orderRepository.findById(orderId).ifPresent(order -> {
+            order.getOrderItems().removeIf(orderItem ->
+                    orderItem.getProduct()
+                            .getName()
+                            .equals(productName)
+                            && orderItem.getProduct()
+                            .getCategory()
+                            .equals(category));
+            orderRepository.save(order);
+        });
+    }
 }

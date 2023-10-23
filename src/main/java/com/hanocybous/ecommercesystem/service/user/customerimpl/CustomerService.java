@@ -314,4 +314,10 @@ public class CustomerService implements ICustomerService {
         customerRepository.updateCustomerFullNameAndZipCode(fullName, zipCode, id);
     }
 
+    public void updateCustomerById(Long id, CustomerDto customerDto) {
+        if (id == null || customerDto == null) {
+            return;
+        }
+        customerRepository.updateCustomerById(id, customerDto);
+    }
 }

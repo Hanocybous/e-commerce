@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.controller;
+package com.hanocybous.ecommercesystem.controller.cart.cartcontrollerimpl;
 
+import com.hanocybous.ecommercesystem.controller.cart.ICartController;
 import com.hanocybous.ecommercesystem.dto.cart.CartDto;
 import com.hanocybous.ecommercesystem.entity.cart.Cart;
 import com.hanocybous.ecommercesystem.service.cart.cartimpl.CartService;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @SuppressWarnings("unused")
 @RequestMapping("/api/v1/cart")
-public class CartController {
+public class CartController implements ICartController {
 
     private final CartService cartService;
 

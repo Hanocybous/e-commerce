@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.controller;
+package com.hanocybous.ecommercesystem.controller.payment.paymentcontrollerimpl;
 
+import com.hanocybous.ecommercesystem.controller.payment.IPaymentController;
 import com.hanocybous.ecommercesystem.dto.payment.PaymentDto;
 import com.hanocybous.ecommercesystem.entity.payment.Payment;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
@@ -12,7 +13,7 @@ import java.util.List;
 @RestController
 @SuppressWarnings("unused")
 @RequestMapping("/api/v1/payment")
-public class PaymentController {
+public class PaymentController implements IPaymentController {
 
     private final PaymentService paymentService;
 

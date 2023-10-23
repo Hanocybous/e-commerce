@@ -301,4 +301,17 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
             "WHERE full_name = ?1", nativeQuery = true)
     List<CustomerDto> getCustomerByFullName(String fullName);
 
+    // update customer by id using the dto
+    @Modifying
+    @Query(value =
+            "UPDATE customer " +
+            "SET full_name = ?1, " +
+            "address = ?2, " +
+            "city = ?3, " +
+            "state = ?4, " +
+            "zip_code = ?5, " +
+            "country = ?6, " +
+            "phone_number = ?7 " +
+            "WHERE id = ?8", nativeQuery = true)
+    void updateCustomerById(Long id, CustomerDto customerDto);
 }

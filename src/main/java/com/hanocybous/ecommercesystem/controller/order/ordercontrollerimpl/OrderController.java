@@ -1,6 +1,8 @@
-package com.hanocybous.ecommercesystem.controller;
+package com.hanocybous.ecommercesystem.controller.order.ordercontrollerimpl;
 
+import com.hanocybous.ecommercesystem.controller.order.IOrderController;
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
+import com.hanocybous.ecommercesystem.entity.order.Order;
 import com.hanocybous.ecommercesystem.service.order.orderimpl.OrderService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ import java.util.List;
 @RestController
 @SuppressWarnings("unused")
 @RequestMapping("/api/v1/order")
-public class OrderController {
+public class OrderController implements IOrderController {
 
     private final OrderService orderService;
 
@@ -212,6 +214,118 @@ public class OrderController {
             @RequestBody
             @PathVariable Long productId) {
         orderService.deleteAllOrdersByProductId(productId);
+    }
+
+    @PostMapping("/updateOrder/{orderId}/{productId}")
+    @ResponseBody
+    public void updateOrder(
+            @RequestBody
+            @PathVariable Long orderId,
+            @RequestBody
+            @PathVariable Long productId) {
+        orderService.updateOrder(orderId, productId);
+    }
+
+    @PostMapping("/updateOrder/{orderId}/{productName}")
+    @ResponseBody
+    public void updateOrder(
+            @RequestBody
+            @PathVariable Long orderId,
+            @RequestBody
+            @PathVariable String productName) {
+        orderService.updateOrder(orderId, Long.valueOf(productName));
+    }
+
+    @PostMapping("/updateOrder/{orderId}/{productName}/{category}")
+    @ResponseBody
+    public void updateOrder(
+            @RequestBody
+            @PathVariable Long orderId,
+            @RequestBody
+            @PathVariable String productName,
+            @RequestBody
+            @PathVariable String category) {
+        orderService.updateOrder(orderId, productName, category);
+    }
+
+    @PostMapping("/updateOrder/{orderId}/")
+    @ResponseBody
+    public void updateOrder(
+            @RequestBody
+            @PathVariable Long orderId) {
+        orderService.updateOrder(orderId);
+    }
+
+    @PostMapping("/updateOrder/{orderId}")
+    @ResponseBody
+    public void updateOrder(
+            @RequestBody
+            @PathVariable Long orderId,
+            @RequestBody
+            @ModelAttribute Order order) {
+        orderService.updateOrder(orderId, order);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromAllOrdersByCategory/{category}")
+    @ResponseBody
+    public void deleteAllProductsFromAllOrdersByCategory(
+            @RequestBody
+            @PathVariable String category) {
+        orderService.deleteAllProductsFromAllOrdersByCategory(category);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromAllOrdersByProductName/{productName}")
+    @ResponseBody
+    public void deleteAllProductsFromAllOrders(
+            @RequestBody
+            @PathVariable String productName) {
+        orderService.deleteAllProductsFromAllOrders(productName);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromAllOrdersByProductId/{productId}")
+    @ResponseBody
+    public void deleteAllProductsFromAllOrders(
+            @RequestBody
+            @PathVariable Long productId) {
+        orderService.deleteAllProductsFromAllOrders(productId);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromAllOrders")
+    @ResponseBody
+    public void deleteAllProductsFromAllOrders() {
+        orderService.deleteAllProductsFromAllOrders();
+    }
+
+    @DeleteMapping("/deleteAllProductsFromOrder/{orderId}")
+    @ResponseBody
+    public void deleteAllProductsFromOrder(
+            @RequestBody
+            @PathVariable Long orderId) {
+        orderService.deleteAllProductsFromOrder(orderId);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromOrder/{orderId}")
+    @ResponseBody
+    public void deleteOrder(
+            @RequestBody
+            @PathVariable Long orderId) {
+        orderService.deleteOrder(orderId);
+    }
+
+    @DeleteMapping("/deleteAllProductsFromOrder{productId}")
+    @ResponseBody
+    public void removeProductFromOrder(
+            @RequestBody
+            @PathVariable Long productId) {
+        orderService.removeProductFromOrder(productId);
+    }
+
+    @PostMapping("/addProductToOrder/{productId}")
+    @ResponseBody
+    public void addProductToOrder(
+            @RequestBody
+            @PathVariable Long productId) {
+        orderService.addProductToOrder(productId);
     }
 
 }

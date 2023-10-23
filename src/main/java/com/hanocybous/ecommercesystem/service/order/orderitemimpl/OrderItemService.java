@@ -3,6 +3,7 @@ package com.hanocybous.ecommercesystem.service.order.orderitemimpl;
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import com.hanocybous.ecommercesystem.repository.order.OrderItemRepository;
 import com.hanocybous.ecommercesystem.service.order.IOrderItemService;
+import java.util.Collections;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -149,7 +150,7 @@ public class OrderItemService implements IOrderItemService {
 
     @Override
     public List<OrderItem> getAllOrderItems() {
-        return null;
+        return orderItemRepository.findAll();
     }
 
     @Override

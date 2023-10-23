@@ -1,5 +1,6 @@
-package com.hanocybous.ecommercesystem.controller;
+package com.hanocybous.ecommercesystem.controller.product.productcontrollerimpl;
 
+import com.hanocybous.ecommercesystem.controller.product.IProductController;
 import com.hanocybous.ecommercesystem.dto.product.ProductDto;
 import com.hanocybous.ecommercesystem.service.product.productimpl.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.List;
 @RestController
 @SuppressWarnings("unused")
 @RequestMapping("/api/v1/product")
-public class ProductController {
+public class ProductController implements IProductController {
 
     private final ProductService productService;
 
