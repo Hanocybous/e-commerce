@@ -8,21 +8,15 @@ public interface IPaymentController {
 
     Double getTotalAmountOfPayments(String paymentMethod, String paymentStatus);
 
-    Double getTotalAmountOfPaymentsByOrderId(Long orderId);
-
-    Double createPayment(String paymentMethod, Double amount);
 
     Double createPayment(String paymentMethod, Double amount, Long orderId);
 
-    Double createPayment(String paymentMethod, Double amount, Long orderId, String paymentStatus);
 
     List<PaymentDto> getPaymentById(Long paymentId);
 
-    List<PaymentDto> getPaymentByOrderId(Long orderId);
 
     List<PaymentDto> getPaymentByPaymentMethod(String paymentMethod);
 
-    List<PaymentDto> getPaymentByPaymentStatus(String paymentStatus);
 
     void deletePaymentById(Long paymentId);
 

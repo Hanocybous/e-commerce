@@ -29,17 +29,6 @@ public class PaymentController implements IPaymentController {
         return paymentService.getTotalAmountOfPayments();
     }
 
-    @GetMapping("/payment/{paymentMethod}")
-    @ResponseBody
-    public Double getTotalAmountOfPaymentsByPaymentMethod(
-            @RequestBody
-            @PathVariable String paymentMethod) {
-        if (paymentMethod == null) {
-            return paymentService.getTotalAmountOfPayments();
-        }
-        return paymentService.getTotalAmountOfPaymentsByPaymentMethod(paymentMethod);
-    }
-
     @GetMapping("/payment/{paymentStatus}")
     @ResponseBody
     public Double getTotalAmountOfPaymentsByPaymentStatus(
@@ -72,24 +61,6 @@ public class PaymentController implements IPaymentController {
                 paymentStatus);
     }
 
-    @GetMapping("/payment/{orderId}")
-    @ResponseBody
-    public Double getTotalAmountOfPaymentsByOrderId(@PathVariable Long orderId) {
-        if (orderId == null) {
-            return paymentService.getTotalAmountOfPayments();
-        }
-        return paymentService.getTotalAmountOfPaymentsByOrderId(orderId);
-    }
-
-    @PostMapping("/payment/create")
-    @ResponseBody
-    public Double createPayment(@RequestBody String paymentMethod,
-                                @RequestBody Double amount) {
-        return paymentService.createPayment(
-                PaymentMethod.valueOf(paymentMethod),
-                amount).getAmount();
-    }
-
     @PostMapping("/payment/create")
     @ResponseBody
     public Double createPayment(@RequestBody String paymentMethod,
@@ -101,57 +72,18 @@ public class PaymentController implements IPaymentController {
                 orderId).getAmount();
     }
 
-    @PostMapping("/payment/create")
-    @ResponseBody
-    public Double createPayment(@RequestBody String paymentMethod,
-                                @RequestBody Double amount,
-                                @RequestBody Long orderId,
-                                @RequestBody String paymentStatus) {
-        return paymentService.createPayment(
-                PaymentMethod.valueOf(paymentMethod),
-                amount,
-                orderId,
-                paymentStatus).getAmount();
-    }
-
-    @PostMapping("/payment/create")
-    public Payment createPayment(@RequestBody PaymentMethod paymentMethod,
-                                 @RequestBody Double amount,
-                                 @RequestBody String paymentStatus) {
+    @PostMapping("/payment/create/{paymentMethod}/{amount}/{paymentStatus}")
+    public Payment createPayment(
+                                 @RequestBody
+                                 @PathVariable PaymentMethod paymentMethod,
+                                 @RequestBody
+                                 @PathVariable Double amount,
+                                 @RequestBody
+                                 @PathVariable String paymentStatus) {
         return paymentService.createPayment(
                 paymentMethod,
                 amount,
                 paymentStatus);
-    }
-
-    @PostMapping("/payment/create")
-    public Payment createPayment(@RequestBody PaymentMethod paymentMethod,
-                                 @RequestBody Double amount,
-                                 @RequestBody Long orderId,
-                                 @RequestBody String paymentStatus) {
-        return paymentService.createPayment(
-                paymentMethod,
-                amount,
-                orderId,
-                paymentStatus);
-    }
-
-    @PostMapping("/payment/create")
-    public Payment createPayment(@RequestBody PaymentMethod paymentMethod,
-                                 @RequestBody Double amount,
-                                 @RequestBody Long orderId) {
-        return paymentService.createPayment(
-                paymentMethod,
-                amount,
-                orderId);
-    }
-
-    @PostMapping("/payment/create")
-    public Payment createPayment(@RequestBody PaymentMethod paymentMethod,
-                                 @RequestBody Double amount) {
-        return paymentService.createPayment(
-                paymentMethod,
-                amount);
     }
 
     @GetMapping("/payment/{paymentId}")
@@ -168,34 +100,6 @@ public class PaymentController implements IPaymentController {
             @RequestBody
             @PathVariable String paymentMethod) {
         return paymentService.getPaymentByPaymentMethod(paymentMethod);
-    }
-
-    @GetMapping("/payment/{paymentStatus}")
-    @ResponseBody
-    public List<PaymentDto> getPaymentByPaymentStatus(
-            @RequestBody
-            @PathVariable String paymentStatus) {
-        return paymentService.getPaymentByPaymentStatus(paymentStatus);
-    }
-
-    @GetMapping("/payment/{paymentMethod}/{paymentStatus}")
-    @ResponseBody
-    public List<PaymentDto> getPaymentByPaymentMethodAndPaymentStatus(
-            @RequestBody
-            @PathVariable String paymentMethod,
-            @RequestBody
-            @PathVariable String paymentStatus) {
-        return paymentService.getPaymentByPaymentMethodAndPaymentStatus(
-                paymentMethod,
-                paymentStatus);
-    }
-
-    @GetMapping("/payment/{orderId}")
-    @ResponseBody
-    public List<PaymentDto> getPaymentByOrderId(
-            @RequestBody
-            @PathVariable Long orderId) {
-        return paymentService.getPaymentByOrderId(orderId);
     }
 
     @DeleteMapping("/payment/{paymentId}")

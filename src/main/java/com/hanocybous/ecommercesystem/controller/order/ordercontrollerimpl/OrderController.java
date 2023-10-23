@@ -304,14 +304,6 @@ public class OrderController implements IOrderController {
         orderService.deleteAllProductsFromOrder(orderId);
     }
 
-    @DeleteMapping("/deleteAllProductsFromOrder/{orderId}")
-    @ResponseBody
-    public void deleteOrder(
-            @RequestBody
-            @PathVariable Long orderId) {
-        orderService.deleteOrder(orderId);
-    }
-
     @DeleteMapping("/deleteAllProductsFromOrder{productId}")
     @ResponseBody
     public void removeProductFromOrder(

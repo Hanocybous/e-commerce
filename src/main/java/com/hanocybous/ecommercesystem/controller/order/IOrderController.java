@@ -18,8 +18,6 @@ public interface IOrderController {
 
     void updateOrder(OrderDto orderDto);
 
-    void deleteOrder(Long orderId);
-
     void deleteAllOrders();
 
     void deleteOrderByUserId(Long userId);
