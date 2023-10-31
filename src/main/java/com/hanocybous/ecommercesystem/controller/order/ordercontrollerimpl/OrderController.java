@@ -2,7 +2,7 @@ package com.hanocybous.ecommercesystem.controller.order.ordercontrollerimpl;
 
 import com.hanocybous.ecommercesystem.controller.order.IOrderController;
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 import com.hanocybous.ecommercesystem.service.order.orderimpl.OrderService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -262,8 +262,8 @@ public class OrderController implements IOrderController {
             @RequestBody
             @PathVariable Long orderId,
             @RequestBody
-            @ModelAttribute Order order) {
-        orderService.updateOrder(orderId, order);
+            @ModelAttribute EOrder EOrder) {
+        orderService.updateOrder(orderId, EOrder);
     }
 
     @DeleteMapping("/deleteAllProductsFromAllOrdersByCategory/{category}")

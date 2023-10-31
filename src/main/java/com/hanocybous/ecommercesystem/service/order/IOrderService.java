@@ -1,7 +1,7 @@
 package com.hanocybous.ecommercesystem.service.order;
 
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public interface IOrderService {
 
     void deleteAllProductsFromAllOrders(Long productId);
 
-    void updateOrder(Long orderId, Order order);
+    void updateOrder(Long orderId, EOrder EOrder);
 
     void updateOrder(Long orderId, Long productId);
 
@@ -31,6 +31,6 @@ public interface IOrderService {
 
     List<OrderDto> getOrderByCategory(String category);
 
-    List<Order> getAllOrders();
+    List<EOrder> getAllOrders();
 
 }

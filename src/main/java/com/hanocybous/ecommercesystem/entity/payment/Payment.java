@@ -1,6 +1,6 @@
 package com.hanocybous.ecommercesystem.entity.payment;
 
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "FK_order_id"))
-    private Order order;
+    private EOrder EOrder;
 
     private LocalDateTime paymentDate;
 
@@ -34,10 +34,10 @@ public class Payment {
 
     private Double amount;
 
-    public Payment(Order order,
+    public Payment(EOrder EOrder,
                    PaymentMethod paymentMethod,
                    Double amount) {
-        this.order = order;
+        this.EOrder = EOrder;
         this.paymentMethod = paymentMethod;
         this.amount = amount;
         this.paymentDate = LocalDateTime.now();
@@ -46,12 +46,12 @@ public class Payment {
 
     // get order id from order
     public Long getOrderId() {
-        return order.getId();
+        return EOrder.getId();
     }
 
     // set order id from order
     public void setOrderId(Long orderId) {
-        this.order.setId(orderId);
+        this.EOrder.setId(orderId);
     }
 
 }

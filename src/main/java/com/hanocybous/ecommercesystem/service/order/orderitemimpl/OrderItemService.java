@@ -3,7 +3,6 @@ package com.hanocybous.ecommercesystem.service.order.orderitemimpl;
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import com.hanocybous.ecommercesystem.repository.order.OrderItemRepository;
 import com.hanocybous.ecommercesystem.service.order.IOrderItemService;
-import java.util.Collections;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -111,7 +110,7 @@ public class OrderItemService implements IOrderItemService {
         for(int i = 0; i < orderItemRepository.findAll().size(); i++) {
             OrderItem orderItem = orderItemRepository.findAll().get(i);
             if(orderItem
-                    .getOrder()
+                    .getEOrder()
                     .getId()
                     .equals(orderId)
                     && orderItem
@@ -128,7 +127,7 @@ public class OrderItemService implements IOrderItemService {
         for(int i = 0; i < orderItemRepository.findAll().size(); i++) {
             OrderItem orderItem = orderItemRepository.findAll().get(i);
             if(orderItem
-                    .getOrder()
+                    .getEOrder()
                     .getId()
                     .equals(orderId)) {
                 orderItemRepository.delete(orderItem);

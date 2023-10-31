@@ -23,14 +23,14 @@ public class OrderItem {
     private Product product;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order order;
+    private EOrder EOrder;
     private Integer quantity;
     private Double price;
     private Double total;
 
-    public OrderItem(Product product, Order order, Integer quantity, Double price, Double total) {
+    public OrderItem(Product product, EOrder EOrder, Integer quantity, Double price, Double total) {
         this.product = product;
-        this.order = order;
+        this.EOrder = EOrder;
         this.quantity = quantity;
         this.price = price;
         this.total = total;
@@ -48,7 +48,7 @@ public class OrderItem {
         return "OrderItem{" +
                 "id=" + id +
                 ", product=" + product +
-                ", order=" + order +
+                ", order=" + EOrder +
                 ", quantity=" + quantity +
                 ", price=" + price +
                 ", total=" + total +
@@ -62,7 +62,7 @@ public class OrderItem {
 
         if (!id.equals(orderItem.id)) return false;
         if (!product.equals(orderItem.product)) return false;
-        if (!order.equals(orderItem.order)) return false;
+        if (!EOrder.equals(orderItem.EOrder)) return false;
         if (!quantity.equals(orderItem.quantity)) return false;
         if (!price.equals(orderItem.price)) return false;
         return total.equals(orderItem.total);
@@ -72,7 +72,7 @@ public class OrderItem {
     public int hashCode() {
         int result = id.hashCode();
         result = 31 * result + product.hashCode();
-        result = 31 * result + order.hashCode();
+        result = 31 * result + EOrder.hashCode();
         result = 31 * result + quantity.hashCode();
         result = 31 * result + price.hashCode();
         result = 31 * result + total.hashCode();

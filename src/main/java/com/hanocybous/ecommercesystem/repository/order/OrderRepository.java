@@ -1,7 +1,7 @@
 package com.hanocybous.ecommercesystem.repository.order;
 
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @SuppressWarnings("unused")
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<EOrder, Long> {
 
 
     @Query(value = 

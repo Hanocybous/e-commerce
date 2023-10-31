@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Order {
+public class EOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,8 @@ public class Order {
     @Transient
     private User userId;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id")
     private List<OrderItem> orderItems;
 
     private LocalDateTime orderDate;
@@ -41,13 +42,13 @@ public class Order {
 
     private Double totalAmount;
 
-    public Order(User userId,
-                 List<OrderItem> orderItems,
-                 LocalDateTime orderDate,
-                 OrderStatus status,
-                 String shippingAddress,
-                 String paymentMethod,
-                 Double totalAmount) {
+    public EOrder(User userId,
+                  List<OrderItem> orderItems,
+                  LocalDateTime orderDate,
+                  OrderStatus status,
+                  String shippingAddress,
+                  String paymentMethod,
+                  Double totalAmount) {
         this.userId = userId;
         this.orderItems = orderItems;
         this.orderDate = orderDate;
@@ -57,13 +58,13 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public Order(Long id,
-                 List<OrderItem> orderItems,
-                 LocalDateTime orderDate,
-                 OrderStatus status,
-                 String shippingAddress,
-                 @NotNull PaymentMethod paymentMethod,
-                 Double totalAmount) {
+    public EOrder(Long id,
+                  List<OrderItem> orderItems,
+                  LocalDateTime orderDate,
+                  OrderStatus status,
+                  String shippingAddress,
+                  @NotNull PaymentMethod paymentMethod,
+                  Double totalAmount) {
         this.id = id;
         this.orderItems = orderItems;
         this.orderDate = orderDate;
@@ -90,8 +91,8 @@ public class Order {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order order)) return false;
-        return getId().equals(order.getId());
+        if (!(o instanceof EOrder EOrder)) return false;
+        return getId().equals(EOrder.getId());
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.hanocybous.ecommercesystem.service.order.orderimpl;
 
 import com.hanocybous.ecommercesystem.dto.order.OrderDto;
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 import com.hanocybous.ecommercesystem.repository.order.OrderRepository;
 import com.hanocybous.ecommercesystem.repository.product.ProductRepository;
 import com.hanocybous.ecommercesystem.service.order.IOrderService;
@@ -31,13 +31,13 @@ public class OrderService implements IOrderService {
     }
 
     public void addProductToOrder(Long productId) {
-        Order order = orderRepository.findById(productId).orElse(new Order());
+        EOrder EOrder = orderRepository.findById(productId).orElse(new EOrder());
         assert productRepository != null;
         productRepository.findById(productId).ifPresent(product -> {
             if (product.getQuantity() > 0) {
                 product.setQuantity(product.getQuantity() - 1);
-                order.addOrderItem(product);
-                orderRepository.save(order);
+                EOrder.addOrderItem(product);
+                orderRepository.save(EOrder);
                 productRepository.save(product);
             }
         });
@@ -108,18 +108,18 @@ public class OrderService implements IOrderService {
         });
     }
 
-    public void updateOrder(Long orderId, Order order) {
+    public void updateOrder(Long orderId, EOrder EOrder) {
         orderRepository
                 .findById(orderId)
                 .ifPresent(order1 -> {
             order1.setOrderItems(
-                    order.getOrderItems());
+                    EOrder.getOrderItems());
             orderRepository.save(order1);
         });
     }
 
-    public void updateOrder(Order order) {
-        orderRepository.save(order);
+    public void updateOrder(EOrder EOrder) {
+        orderRepository.save(EOrder);
     }
 
     public void updateOrder(Long orderId) {
@@ -171,7 +171,7 @@ public class OrderService implements IOrderService {
         });
     }
 
-    public List<Order> getAllOrders() {
+    public List<EOrder> getAllOrders() {
         return orderRepository.findAll();
     }
 

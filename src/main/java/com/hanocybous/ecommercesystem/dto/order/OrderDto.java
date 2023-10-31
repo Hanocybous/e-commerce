@@ -1,6 +1,6 @@
 package com.hanocybous.ecommercesystem.dto.order;
 
-import com.hanocybous.ecommercesystem.entity.order.Order;
+import com.hanocybous.ecommercesystem.entity.order.EOrder;
 import com.hanocybous.ecommercesystem.entity.order.OrderItem;
 import com.hanocybous.ecommercesystem.entity.order.OrderStatus;
 import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
@@ -60,8 +60,8 @@ public record OrderDto(
     }
 
     @Contract(" -> new")
-    public @NotNull Order toOrder() {
-        return new Order(
+    public @NotNull EOrder toOrder() {
+        return new EOrder(
                 id,
                 orderItems,
                 orderDate,
