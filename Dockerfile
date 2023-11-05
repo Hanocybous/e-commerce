@@ -4,9 +4,8 @@ LABEL authors="charilaoschatz"
 WORKDIR /src
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:resolve
+RUN ./mvnw dependency:go-offline
 
 COPY src ./src
-RUN ./mvnw package
 
 CMD ["./mvnw", "spring-boot:run"]
