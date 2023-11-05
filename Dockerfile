@@ -1,7 +1,9 @@
-FROM eclipse-temurin:17-jdk-jammy
-LABEL authors="charilaoschatz"
+# syntax=docker/dockerfile:1
 
-WORKDIR /src
+FROM eclipse-temurin:17-jdk-jammy
+
+WORKDIR /app
+
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:go-offline
