@@ -10,28 +10,7 @@ jobs:
 
     steps:
       - name: Check Stale Issues and PRs
-        id: stale_issues_prs
-        run: |
-          GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-          DAYS_BEFORE_STALE=30  # Define the number of days before an issue or PR is considered stale
-
-          echo "Checking for stale issues and pull requests..."
-          
-          # Fetch all open issues and PRs that are older than the defined threshold
-          STALE_ITEMS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" ${{ github.api_url }}/repos/${{ github.repository }}/issues?state=open | jq -r "map(select(.updated_at <= \"$(date -u -d \"-$DAYS_BEFORE_STALE days\" +"%Y-%m-%dT%H:%M:%SZ")\") | {number: .number, url: .url})")
-
-          # Process stale issues and PRs
-          for ITEM in $STALE_ITEMS; do
-            ISSUE_NUMBER=$(echo "$ITEM" | jq -r '.number')
-            ISSUE_URL=$(echo "$ITEM" | jq -r '.url')
-
-            # Label the stale issue or PR
-            curl -s -H "Authorization: token $GITHUB_TOKEN" -X POST -d '["stale"]' ${{ github.api_url }}/repos/${{ github.repository }}/issues/$ISSUE_NUMBER/labels
-
-            # Close the stale issue or PR
-            curl -s -H "Authorization: token $GITHUB_TOKEN" -X PATCH -d '{"state": "closed"}' $ISSUE_URL
-
-            echo "Closed and labeled stale issue or PR #$ISSUE_NUMBER."
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/stale@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 30  # Define the number of days before an issue or PR is considered stale
