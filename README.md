@@ -1,6 +1,27 @@
 # E-commerce Website
 
 [![Java CI with Maven](https://github.com/Hanocybous/e-commerce/actions/workflows/maven.yml/badge.svg)](https://github.com/Hanocybous/e-commerce/actions/workflows/maven.yml)
+![Maintenance](https://img.shields.io/maintenance/yes/2023)
+![GitHub](https://img.shields.io/github/license/Hanocybous/e-commerce)
+
+---
+![GitHub last commit (by committer)](https://img.shields.io/github/last-commit/Hanocybous/e-commerce)
+![GitHub issues](https://img.shields.io/github/issues/Hanocybous/e-commerce)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/Hanocybous/e-commerce)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Hanocybous/e-commerce)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/Hanocybous/e-commerce)
+
+---
+![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/Hanocybous/e-commerce)
+![GitHub repo size](https://img.shields.io/github/repo-size/Hanocybous/e-commerce)
+![GitHub top language](https://img.shields.io/github/languages/top/Hanocybous/e-commerce)
+![GitHub language count](https://img.shields.io/github/languages/count/Hanocybous/e-commerce)
+![GitHub contributors](https://img.shields.io/github/contributors/Hanocybous/e-commerce)
+
+---
+![GitHub followers](https://img.shields.io/github/followers/Hanocybous)
+
+---
 
 ## Description
 
@@ -18,7 +39,6 @@ This is an E-commerce website that allows users to buy and sell products. Users 
 * [Links](#links)
 * [Credits](#credits)
 * [Technologies](#technologies)
-* [Badges](#badges)
 * [Author](#author)
 * [Acknowledgements](#acknowledgements)
 * [Code of Conduct](CODE_OF_CONDUCT.md)
@@ -89,22 +109,6 @@ You can find more of my work at [GitHub](github.com/Hanocybous)
 * Spring Security
 * Spring Data JPA
 * PostgreSQL
-
-## Badges
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub contributors](https://img.shields.io/github/contributors/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub watchers](https://img.shields.io/github/watchers/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/Hanocybous/e-commerce?style=for-the-badge)
-![GitHub all releases](https://img.shields.io/github/downloads/Hanocybous/e-commerce/total?style=for-the-badge)
 
 ## Author
 
