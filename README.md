@@ -1,5 +1,7 @@
 # E-commerce Website
 
+[![Java CI with Maven](https://github.com/Hanocybous/e-commerce/actions/workflows/maven.yml/badge.svg)](https://github.com/Hanocybous/e-commerce/actions/workflows/maven.yml)
+
 ## Description
 
 This is an E-commerce website that allows users to buy and sell products. Users can create an account, login, and logout. Users can also add products to their cart, checkout, and view their order history. Users can also add products to sell, edit their products, and delete their products.
