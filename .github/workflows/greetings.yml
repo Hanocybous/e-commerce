@@ -1,0 +1,51 @@
+name: Greet New Contributors
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  greet_contributor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if User Already Greeted
+        id: check_greeting
+        run: |
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          USER_LOGIN=${{ github.event.issue.user.login }}
+          LABEL_NAME="first-time-contributor"
+          
+          # Check if the issue or pull request is already labeled
+          LABELS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" ${{ github.api_url }}/repos/${{ github.repository }}/issues/${ISSUE_NUMBER}/labels | jq -r '.[].name')
+          
+          if [[ $LABELS == *"$LABEL_NAME"* ]]; then
+            echo "User has already been greeted."
+            echo "::set-output name=ALREADY_GREETED::true"
+          else
+            echo "User hasn't been greeted yet."
+            echo "::set-output name=ALREADY_GREETED::false"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Greet Contributor
+        if: steps.check_greeting.outputs.ALREADY_GREETED == 'false'
+        run: |
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          USER_LOGIN=${{ github.event.issue.user.login }}
+          LABEL_NAME="first-time-contributor"
+          GREETING_COMMENT="Welcome, @$USER_LOGIN! Thank you for your contribution. We're glad to see you here. 😄 :tada:"
+          
+          # Add a comment to greet the user
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST -d "{\"body\":\"$GREETING_COMMENT\"}" ${{ github.api_url }}/repos/${{ github.repository }}/issues/${ISSUE_NUMBER}/comments
+          
+          # Add a label to indicate the user has been greeted
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST -d "[$LABEL_NAME]" ${{ github.api_url }}/repos/${{ github.repository }}/issues/${ISSUE_NUMBER}/labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
