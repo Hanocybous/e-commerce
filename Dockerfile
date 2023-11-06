@@ -4,12 +4,10 @@ FROM eclipse-temurin:17-jdk-jammy
 
 
 # Provide a description of the image
-LABEL maintainer="
-    name: Hanocybous
-    email: harrychatz5@gmail.com
-    github: github.com/Hanocybous
-    description: This is a docker image for the Spring Boot E-commerce application hosted on github.com/Hanocybous/ecommerce
-"
+LABEL "com.hanocybous.e-commerce.vendor"="Hanocybous Inc."
+LABEL version="1.0.0"
+LABEL architecture="amd64"
+LABEL description="This is a docker image for the e-commerce website"
 
 # Set the working directory
 ARG DIRNAME=ecommerce
