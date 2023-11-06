@@ -8,6 +8,7 @@ LABEL "com.hanocybous.e-commerce.vendor"="Hanocybous Inc."
 LABEL version="1.0.0"
 LABEL architecture="amd64"
 LABEL description="This is a docker image for the e-commerce website"
+LABEL org.opencontainers.image.description description
 
 # Set the working directory
 ARG DIRNAME=ecommerce
