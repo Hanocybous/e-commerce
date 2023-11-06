@@ -3,17 +3,26 @@
 FROM eclipse-temurin:17-jdk-jammy
 
 
-LABEL org.opencontainers.image.description='A simple Spring Boot E-commerce application that uses Spring Data JPA with a PostgreSQL database.'
-LABEL org.opencontainers.image.authors='Hanocybous'
+# Provide a description of the image
+LABEL maintainer="
+    name: Hanocybous
+    email: harrychatz5@gmail.com
+    github: github.com/Hanocybous
+    description: This is a docker image for the Spring Boot E-commerce application hosted on github.com/Hanocybous/ecommerce
+"
 
-ENV DIRPATH=/path
-WORKDIR $DIRPATH/$DIRNAME
-RUN pwd
+# Set the working directory
+ARG DIRNAME=ecommerce
+ARG DIRPATH=/path
+WORKDIR ${DIRPATH}/${DIRNAME}
+RUN mkdir -p ${DIRPATH}/${DIRNAME}
 
+# Copy the files
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN chmod +x mvnw
 
+# Resolve the dependencies
 RUN ./mvnw dependency:resolve
 
 COPY src ./src
