@@ -1,0 +1,37 @@
+# This is the default configuration for the metrics reporter.
+
+# The period in seconds between polls.
+pollInterval: 10
+
+# The period in seconds between flushes.
+flushInterval: 10
+
+# The period in seconds between retries.
+retryInterval: 10
+
+# The number of retries to attempt before giving up.
+retries: 3
+
+# The number of metrics to buffer before sending.
+bufferSize: 100
+
+# The maximum number of metrics to buffer before dropping.
+maxBufferSize: 10000
+
+# The maximum number of metrics to send per request.
+maxBatchSize: 1000
+
+# The maximum number of seconds to wait for a response from the server.
+maxWaitSeconds: 10
+
+# The maximum number of seconds to wait for a connection to the server.
+maxConnectSeconds: 10
+
+# The maximum number of seconds to wait for a socket to be available.
+maxSocketSeconds: 10
+
+# The maximum number of seconds to wait for a socket to be connected.
+maxSocketConnectSeconds: 10
+
+# The maximum number of seconds to wait for a socket to be written to.
+maxSocketWriteSeconds: 10
