@@ -1,46 +1,25 @@
-package com.hanocybous.ecommercesystem.dto.product;
+package com.hanocybous.ecommercesystem.dto.product
 
-import java.util.Objects;
-
-public record ProductDto(
-        Long id,
-        String name,
-        double price,
-        String category,
-        int quantity
+data class ProductDto(
+    val id: Long,
+    val name: String,
+    val price: Double,
+    val category: String,
+    val quantity: Int
 ) {
 
-    public ProductDto {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(price);
-        Objects.requireNonNull(category);
-        Objects.requireNonNull(quantity);
-
-        if (name.isBlank()) {
-            throw new IllegalArgumentException("Name cannot be blank");
-        }
-        if (price < 0) {
-            throw new IllegalArgumentException("Price cannot be negative");
-        }
-        if (category.isBlank()) {
-            throw new IllegalArgumentException("Category cannot be blank");
-        }
-        if (quantity < 0) {
-            throw new IllegalArgumentException("Quantity cannot be negative");
-        }
-
+    init {
+        require(name.isNotBlank()) { "Name cannot be blank" }
+        require(price >= 0) { "Price cannot be negative" }
+        require(category.isNotBlank()) { "Category cannot be blank" }
+        require(quantity >= 0) { "Quantity cannot be negative" }
     }
 
-    @Override
-    public String toString() {
-        return "ProductDto{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", quantity=" + quantity +
-                '}';
+    override fun toString(): String {
+        return "ProductDto(id=$id, " +
+                "name='$name', " +
+                "price=$price, " +
+                "category='$category', " +
+                "quantity=$quantity)"
     }
-
 }

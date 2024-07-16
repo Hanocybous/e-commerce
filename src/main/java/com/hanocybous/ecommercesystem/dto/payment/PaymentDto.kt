@@ -1,56 +1,31 @@
-package com.hanocybous.ecommercesystem.dto.payment;
+package com.hanocybous.ecommercesystem.dto.payment
 
-import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
-import com.hanocybous.ecommercesystem.entity.payment.PaymentStatus;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod
+import com.hanocybous.ecommercesystem.entity.payment.PaymentStatus
+import java.time.LocalDateTime
 
-import java.time.LocalDateTime;
-import java.util.Objects;
-
-public record PaymentDto(
-        Long id,
-        Long orderId,
-        LocalDateTime paymentDate,
-        PaymentStatus paymentStatus,
-        PaymentMethod paymentMethod,
-        Double amount
+data class PaymentDto(
+    val id: Long,
+    val orderId: Long,
+    val paymentDate: LocalDateTime,
+    val paymentStatus: PaymentStatus,
+    val paymentMethod: PaymentMethod,
+    val amount: Double
 ) {
 
-    public PaymentDto {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(orderId);
-        Objects.requireNonNull(paymentDate);
-        Objects.requireNonNull(paymentStatus);
-        Objects.requireNonNull(paymentMethod);
-        Objects.requireNonNull(amount);
-
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        }
-        if (orderId < 0) {
-            throw new IllegalArgumentException("Order id cannot be negative");
-        }
-        if (id < 0) {
-            throw new IllegalArgumentException("Id cannot be negative");
-        }
-        if (paymentDate.isAfter(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Payment date cannot be in the future");
-        }
-
+    init {
+        require(id >= 0) { "ID cannot be negative" }
+        require(orderId >= 0) { "Order ID cannot be negative" }
+        require(!paymentDate.isAfter(LocalDateTime.now())) { "Payment date cannot be in the future" }
+        require(amount >= 0) { "Amount cannot be negative" }
     }
 
-    @Contract(pure = true)
-    @Override
-    public @NotNull String toString() {
-        return "PaymentDto{" +
-                "id=" + id +
-                ", orderId=" + orderId +
-                ", paymentDate=" + paymentDate +
-                ", paymentStatus=" + paymentStatus +
-                ", paymentMethod=" + paymentMethod +
-                ", amount=" + amount +
-                '}';
+    override fun toString(): String {
+        return "PaymentDto(id=$id, " +
+                "orderId=$orderId, " +
+                "paymentDate=$paymentDate, " +
+                "paymentStatus=$paymentStatus, " +
+                "paymentMethod=$paymentMethod, " +
+                "amount=$amount)"
     }
-
 }

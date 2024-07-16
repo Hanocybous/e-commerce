@@ -3,12 +3,10 @@ package com.hanocybous.ecommercesystem.service.cart.cartimpl;
 import com.hanocybous.ecommercesystem.dto.cart.CartDto;
 import com.hanocybous.ecommercesystem.entity.cart.Cart;
 import com.hanocybous.ecommercesystem.repository.cart.CartRepository;
-import com.hanocybous.ecommercesystem.repository.product.ProductRepository;
 import com.hanocybous.ecommercesystem.service.cart.ICartService;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;

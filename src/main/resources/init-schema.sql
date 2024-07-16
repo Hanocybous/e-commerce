@@ -18,6 +18,7 @@ CREATE TABLE cart
     total_discount DOUBLE PRECISION,
     total_shipping DOUBLE PRECISION,
     total_amount   DOUBLE PRECISION,
+    product_id     BIGINT,
     CONSTRAINT pk_cart PRIMARY KEY (id)
 );
 

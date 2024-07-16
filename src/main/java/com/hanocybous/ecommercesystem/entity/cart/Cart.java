@@ -30,6 +30,7 @@ public final class Cart {
     private Double totalDiscount;
     private Double totalShipping;
     private Double totalAmount;
+    private Long productId;
 
     public Cart(Collection<Product> products) {
         this.products = products;
@@ -122,6 +123,64 @@ public final class Cart {
     @Override
     public int hashCode() {
         return products.hashCode();
+    }
+
+    //getters and setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Double getTotalDiscount() {
+        return totalDiscount;
+    }
+
+    public void setTotalDiscount(Double totalDiscount) {
+        this.totalDiscount = totalDiscount;
+    }
+
+    public Double getTotalShipping() {
+        return totalShipping;
+    }
+
+    public void setTotalShipping(Double totalShipping) {
+        this.totalShipping = totalShipping;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
 }

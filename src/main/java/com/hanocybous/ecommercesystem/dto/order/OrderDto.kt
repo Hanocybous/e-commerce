@@ -1,75 +1,47 @@
-package com.hanocybous.ecommercesystem.dto.order;
+package com.hanocybous.ecommercesystem.dto.order
 
-import com.hanocybous.ecommercesystem.entity.order.EOrder;
-import com.hanocybous.ecommercesystem.entity.order.OrderItem;
-import com.hanocybous.ecommercesystem.entity.order.OrderStatus;
-import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.hanocybous.ecommercesystem.entity.order.EOrder
+import com.hanocybous.ecommercesystem.entity.order.OrderItem
+import com.hanocybous.ecommercesystem.entity.order.OrderStatus
+import com.hanocybous.ecommercesystem.entity.payment.PaymentMethod
+import java.time.LocalDateTime
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-
-public record OrderDto(
-        Long id,
-        List<OrderItem> orderItems,
-        LocalDateTime orderDate,
-        OrderStatus status,
-        String shippingAddress,
-        PaymentMethod paymentMethod,
-        Double totalAmount
+data class OrderDto(
+    val id: Long,
+    val orderItems: List<OrderItem>,
+    val orderDate: LocalDateTime,
+    val status: OrderStatus,
+    val shippingAddress: String,
+    val paymentMethod: PaymentMethod,
+    val totalAmount: Double
 ) {
 
-    public OrderDto {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(orderItems);
-        Objects.requireNonNull(orderDate);
-        Objects.requireNonNull(status);
-        Objects.requireNonNull(shippingAddress);
-        Objects.requireNonNull(paymentMethod);
-        Objects.requireNonNull(totalAmount);
-
-        if (totalAmount < 0) {
-            throw new IllegalArgumentException("Total amount cannot be negative");
-        }
-        if (orderItems.isEmpty()) {
-            throw new IllegalArgumentException("Order items cannot be empty");
-        }
-        if (shippingAddress.isBlank()) {
-            throw new IllegalArgumentException("Shipping address cannot be blank");
-        }
-        if (orderDate.isAfter(LocalDateTime.now())) {
-            throw new IllegalArgumentException("Order date cannot be in the future");
-        }
-
+    init {
+        require(orderItems.isNotEmpty()) { "Order items cannot be empty" }
+        require(shippingAddress.isNotBlank()) { "Shipping address cannot be blank" }
+        require(totalAmount >= 0) { "Total amount cannot be negative" }
+        require(!orderDate.isAfter(LocalDateTime.now())) { "Order date cannot be in the future" }
     }
 
-    @Contract(pure = true)
-    @Override
-    public @NotNull String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", orderItems=" + orderItems +
-                ", orderDate=" + orderDate +
-                ", status=" + status +
-                ", shippingAddress='" + shippingAddress + '\'' +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", totalAmount=" + totalAmount +
-                '}';
+    override fun toString(): String {
+        return "OrderDto(id=$id, " +
+                "orderItems=$orderItems, " +
+                "orderDate=$orderDate, " +
+                "status=$status, " +
+                "shippingAddress='$shippingAddress', " +
+                "paymentMethod='$paymentMethod', " +
+                "totalAmount=$totalAmount)"
     }
 
-    @Contract(" -> new")
-    public @NotNull EOrder toOrder() {
-        return new EOrder(
-                id,
-                orderItems,
-                orderDate,
-                status,
-                shippingAddress,
-                paymentMethod,
-                totalAmount
-        );
+    fun toOrder(): EOrder {
+        return EOrder(
+            id,
+            orderItems,
+            orderDate,
+            status,
+            shippingAddress,
+            paymentMethod,
+            totalAmount
+        )
     }
-
 }
