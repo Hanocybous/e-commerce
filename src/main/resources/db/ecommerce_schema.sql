@@ -1,10 +1,10 @@
 -- Table for session management
 create table spring_session
 (
-    primary_id            char(36) not null
+    primary_id            varchar(36) not null
         constraint spring_session_pk
             primary key,
-    session_id            char(36) not null,
+    session_id            varchar(36) not null,
     creation_time         bigint   not null,
     last_access_time      bigint   not null,
     max_inactive_interval integer  not null,
@@ -24,10 +24,7 @@ create index spring_session_ix3
 -- Table for session attributes
 create table spring_session_attributes
 (
-    session_primary_id char(36)     not null
-        constraint spring_session_attributes_fk
-            references spring_session
-            on delete cascade,
+    session_primary_id varchar(36) not null,
     attribute_name     varchar(200) not null,
     attribute_bytes    bytea        not null,
     constraint spring_session_attributes_pk
