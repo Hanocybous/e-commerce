@@ -16,12 +16,4 @@ data class AdminDto(
         require(password.isNotBlank()) { "Password cannot be blank" }
     }
 
-    override fun toString(): String {
-        return "AdminDto(id=$id, " +
-                "fullName='$fullName', " +
-                "username='$username', " +
-                "email='$email', " +
-                "password='$password', " +
-                "verificationCode=$verificationCode)"
-    }
 }

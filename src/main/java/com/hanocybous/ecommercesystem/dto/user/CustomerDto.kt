@@ -27,17 +27,4 @@ data class CustomerDto(
         require(state.isNotBlank()) { "State cannot be blank" }
     }
 
-    override fun toString(): String {
-        return "CustomerDto(id=$id, " +
-                "fullName='$fullName', " +
-                "username='$username', " +
-                "email='$email', " +
-                "password='$password', " +
-                "address='$address', " +
-                "phoneNumber='$phoneNumber', " +
-                "city='$city', " +
-                "country='$country', " +
-                "zipCode='$zipCode', " +
-                "state='$state')"
-    }
 }

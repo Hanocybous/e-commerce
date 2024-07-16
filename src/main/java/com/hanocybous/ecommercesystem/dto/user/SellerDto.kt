@@ -21,14 +21,4 @@ data class SellerDto(
         require(companyPhoneNumber.isNotBlank()) { "Company phone number cannot be blank" }
     }
 
-    override fun toString(): String {
-        return "SellerDto(id=$id, " +
-                "fullName='$fullName', " +
-                "username='$username', " +
-                "email='$email', " +
-                "password='$password', " +
-                "companyName='$companyName', " +
-                "companyAddress='$companyAddress', " +
-                "companyPhoneNumber='$companyPhoneNumber')"
-    }
 }

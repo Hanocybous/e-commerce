@@ -18,12 +18,4 @@ data class UserDto(
         require(password.isNotBlank()) { "Password cannot be blank" }
     }
 
-    override fun toString(): String {
-        return "UserDto(id=$id, " +
-                "fullName='$fullName', " +
-                "username='$username', " +
-                "email='$email', " +
-                "password='$password', " +
-                "userType=$userType)"
-    }
 }
