@@ -21,7 +21,6 @@ public class AdminController implements IAdminController {
     }
 
     @GetMapping("/getAdminByVerificationToken/{verificationToken}")
-    @ResponseBody
     public List<AdminDto> getAdminByVerificationToken(
             @RequestBody
             @PathVariable Long verificationToken) {
@@ -29,7 +28,6 @@ public class AdminController implements IAdminController {
     }
 
     @GetMapping("/getAdminByIdAndVerificationToken/{id}/{verificationToken}")
-    @ResponseBody
     public List<AdminDto> getAdminByIdAndVerificationToken(
             @RequestBody
             @PathVariable Long id,
@@ -38,7 +36,6 @@ public class AdminController implements IAdminController {
     }
 
     @GetMapping("/getAdminByUsernameAndVerificationToken/{username}/{verificationToken}")
-    @ResponseBody
     public List<AdminDto> getAdminByUsernameAndVerificationToken(
             @RequestBody
             @PathVariable String username,
@@ -47,7 +44,6 @@ public class AdminController implements IAdminController {
     }
 
     @GetMapping("/getAdminByEmailAndVerificationToken/{email}/{verificationToken}")
-    @ResponseBody
     public List<AdminDto> getAdminByEmailAndVerificationToken(
             @RequestBody
             @PathVariable String email,
@@ -56,7 +52,6 @@ public class AdminController implements IAdminController {
     }
 
     @PostMapping("/updateAdminVerificationToken/{id}/{verificationToken}")
-    @ResponseBody
     public void updateAdminVerificationToken(
             @RequestBody
             @PathVariable Long id,
@@ -73,7 +68,6 @@ public class AdminController implements IAdminController {
     }
 
     @PostMapping("/updateAdminVerificationTokenByUsername/{username}/{verificationToken}")
-    @ResponseBody
     public void updateAdminVerificationTokenByUsername(
             @RequestBody
             @PathVariable String username,
@@ -82,7 +76,6 @@ public class AdminController implements IAdminController {
     }
 
     @PostMapping("/updateAdminVerificationTokenByEmail/{email}/{verificationToken}")
-    @ResponseBody
     public void updateAdminVerificationTokenByEmail(
             @RequestBody
             @PathVariable String email,

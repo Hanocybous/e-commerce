@@ -22,7 +22,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getCartByUserId/{userId}")
-    @ResponseBody
     public List<CartDto> getCartByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -30,7 +29,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getCartByUserIdAndProductId/{userId}/{productId}")
-    @ResponseBody
     public List<CartDto> getCartByUserIdAndProductId(
             @RequestBody
             @PathVariable Long userId,
@@ -40,7 +38,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getCartByUserIdAndProductIdAndQuantity/{userId}/{productId}/{quantity}")
-    @ResponseBody
     public List<CartDto> getCartByUserIdAndProductIdAndQuantity(
             @RequestBody
             @PathVariable Long userId,
@@ -52,7 +49,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByTotalDiscount/{totalDiscount}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByTotalDiscount(
             @RequestBody
             @PathVariable Double totalDiscount) {
@@ -60,7 +56,6 @@ public class CartController implements ICartController {
     }
 
     @PostMapping("/addCart")
-    @ResponseBody
     public void addCart(
             @RequestBody
             @RequestParam Cart cart) {
@@ -68,7 +63,6 @@ public class CartController implements ICartController {
     }
 
     @PutMapping("/updateCartByProductIdAndUserId/{productId}/{userId}/{quantity}")
-    @ResponseBody
     public void updateCartByProductIdAndUserId(
             @RequestBody
             @PathVariable Long productId,
@@ -80,7 +74,6 @@ public class CartController implements ICartController {
     }
 
     @DeleteMapping("/deleteCartByProductIdAndUserId/{productId}/{userId}")
-    @ResponseBody
     public void deleteCartByProductIdAndUserId(
             @RequestBody
             @PathVariable Long productId,
@@ -90,7 +83,6 @@ public class CartController implements ICartController {
     }
 
     @DeleteMapping("/deleteCartByUserId/{userId}")
-    @ResponseBody
     public void deleteCartByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -98,7 +90,6 @@ public class CartController implements ICartController {
     }
 
     @DeleteMapping("/deleteCartByProductId/{productId}")
-    @ResponseBody
     public void deleteCartByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -106,7 +97,6 @@ public class CartController implements ICartController {
     }
 
     @DeleteMapping("/deleteCartByUserIdAndProductId/{userId}/{productId}")
-    @ResponseBody
     public void deleteCartByUserIdAndProductId(
             @RequestBody
             @PathVariable Long userId,
@@ -116,7 +106,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByTotalPrice/{totalPrice}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByTotalPrice(
             @RequestBody
             @PathVariable Double totalPrice) {
@@ -124,7 +113,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByTotalShipping/{totalShipping}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByTotalShipping(
             @RequestBody
             @PathVariable Double totalShipping) {
@@ -132,7 +120,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByTotalAmount/{totalAmount}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByTotalAmount(
             @RequestBody
             @PathVariable Double totalAmount) {
@@ -140,7 +127,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByUserId/{userId}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -148,7 +134,6 @@ public class CartController implements ICartController {
     }
 
     @GetMapping("/getAllCartsSortedByProductId/{productId}")
-    @ResponseBody
     public List<CartDto> getAllCartsSortedByProductId(
             @RequestBody
             @PathVariable Long productId) {

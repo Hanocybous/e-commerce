@@ -23,13 +23,11 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getAllOrders")
-    @ResponseBody
     public void getAllOrders() {
         orderService.getAllOrders();
     }
 
     @GetMapping("/getOrderById/{orderId}")
-    @ResponseBody
     public void getOrderById(
             @RequestBody
             @PathVariable Long orderId) {
@@ -37,7 +35,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByUserId/{userId}")
-    @ResponseBody
     public void getOrderByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -45,7 +42,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByUserIdAndProductId/{userId}/{productId}")
-    @ResponseBody
     public void getOrderByUserIdAndProductId(
             @RequestBody
             @PathVariable Long userId,
@@ -55,7 +51,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByProductId/{productId}")
-    @ResponseBody
     public List<OrderDto> getOrderByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -63,7 +58,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByProductName/{productName}")
-    @ResponseBody
     public List<OrderDto> getOrderByProductName(
             @RequestBody
             @PathVariable String productName) {
@@ -71,7 +65,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByCategory/{category}")
-    @ResponseBody
     public List<OrderDto> getOrderByCategory(
             @RequestBody
             @PathVariable String category) {
@@ -79,7 +72,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByTotalAmount/{totalAmount}")
-    @ResponseBody
     public List<OrderDto> getOrderByTotalAmount(
             @RequestBody
             @PathVariable Double totalAmount) {
@@ -87,7 +79,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByTotalShipping/{totalShipping}")
-    @ResponseBody
     public List<OrderDto> getOrderByTotalShipping(
             @RequestBody
             @PathVariable Double totalShipping) {
@@ -95,7 +86,6 @@ public class OrderController implements IOrderController {
     }
 
     @GetMapping("/getOrderByTotalAmountAndTotalShipping/{totalAmount}/{totalShipping}")
-    @ResponseBody
     public List<OrderDto> getOrderByTotalAmountAndTotalShipping(
             @RequestBody
             @PathVariable Double totalAmount,
@@ -105,7 +95,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/addOrder")
-    @ResponseBody
     public void addOrder(
             @RequestBody
             @ModelAttribute OrderDto orderDto) {
@@ -113,7 +102,6 @@ public class OrderController implements IOrderController {
     }
 
     @PutMapping("/updateOrder")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @ModelAttribute @NotNull OrderDto orderDto) {
@@ -121,7 +109,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteOrderById/{orderId}")
-    @ResponseBody
     public void deleteOrderById(
             @RequestBody
             @PathVariable Long orderId) {
@@ -129,7 +116,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteOrderByUserId/{userId}")
-    @ResponseBody
     public void deleteOrderByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -137,7 +123,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteOrderByProductId/{productId}")
-    @ResponseBody
     public void deleteOrderByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -145,7 +130,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteOrderByUserIdAndProductId/{userId}/{productId}")
-    @ResponseBody
     public void deleteOrderByUserIdAndProductId(
             @RequestBody
             @PathVariable Long userId,
@@ -155,7 +139,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteProductFromOrder/{orderId}/{productName}/{category}")
-    @ResponseBody
     public void deleteProductFromOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -167,7 +150,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteProductFromOrder/{orderId}/{productId}")
-    @ResponseBody
     public void deleteProductFromOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -177,7 +159,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteProductFromOrder/{orderId}/{productName}")
-    @ResponseBody
     public void deleteProductFromOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -187,7 +168,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteProductFromOrder/{orderId}")
-    @ResponseBody
     public void deleteProductFromOrder(
             @RequestBody
             @PathVariable Long orderId) {
@@ -195,13 +175,11 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllOrders")
-    @ResponseBody
     public void deleteAllOrders() {
         orderService.deleteAllOrders();
     }
 
     @DeleteMapping("/deleteAllOrdersByUserId/{userId}")
-    @ResponseBody
     public void deleteAllOrdersByUserId(
             @RequestBody
             @PathVariable Long userId) {
@@ -209,7 +187,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllOrdersByProductId/{productId}")
-    @ResponseBody
     public void deleteAllOrdersByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -217,7 +194,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/updateOrder/{orderId}/{productId}")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -227,7 +203,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/updateOrder/{orderId}/{productName}")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -237,7 +212,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/updateOrder/{orderId}/{productName}/{category}")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -249,7 +223,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/updateOrder/{orderId}/")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @PathVariable Long orderId) {
@@ -257,7 +230,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/updateOrder/{orderId}")
-    @ResponseBody
     public void updateOrder(
             @RequestBody
             @PathVariable Long orderId,
@@ -267,7 +239,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllProductsFromAllOrdersByCategory/{category}")
-    @ResponseBody
     public void deleteAllProductsFromAllOrdersByCategory(
             @RequestBody
             @PathVariable String category) {
@@ -275,7 +246,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllProductsFromAllOrdersByProductName/{productName}")
-    @ResponseBody
     public void deleteAllProductsFromAllOrders(
             @RequestBody
             @PathVariable String productName) {
@@ -283,7 +253,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllProductsFromAllOrdersByProductId/{productId}")
-    @ResponseBody
     public void deleteAllProductsFromAllOrders(
             @RequestBody
             @PathVariable Long productId) {
@@ -291,13 +260,11 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllProductsFromAllOrders")
-    @ResponseBody
     public void deleteAllProductsFromAllOrders() {
         orderService.deleteAllProductsFromAllOrders();
     }
 
     @DeleteMapping("/deleteAllProductsFromOrder/{orderId}")
-    @ResponseBody
     public void deleteAllProductsFromOrder(
             @RequestBody
             @PathVariable Long orderId) {
@@ -305,7 +272,6 @@ public class OrderController implements IOrderController {
     }
 
     @DeleteMapping("/deleteAllProductsFromOrder{productId}")
-    @ResponseBody
     public void removeProductFromOrder(
             @RequestBody
             @PathVariable Long productId) {
@@ -313,7 +279,6 @@ public class OrderController implements IOrderController {
     }
 
     @PostMapping("/addProductToOrder/{productId}")
-    @ResponseBody
     public void addProductToOrder(
             @RequestBody
             @PathVariable Long productId) {

@@ -21,7 +21,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getCustomerByEmail/{email}")
-    @ResponseBody
     public List<UserDto> getCustomerByEmail(
             @RequestBody
             @PathVariable String email) {
@@ -29,7 +28,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getSellerByEmail/{email}")
-    @ResponseBody
     public List<UserDto> getSellerByEmail(
             @RequestBody
             @PathVariable String email) {
@@ -37,7 +35,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAdminByEmail/{email}")
-    @ResponseBody
     public List<UserDto> getAdminByEmail(
             @RequestBody
             @PathVariable String email) {
@@ -45,7 +42,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getCustomerByUsername/{username}")
-    @ResponseBody
     public List<UserDto> getCustomerByUsername(
             @RequestBody
             @PathVariable String username) {
@@ -53,7 +49,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getSellerByUsername/{username}")
-    @ResponseBody
     public List<UserDto> getSellerByUsername(
             @RequestBody
             @PathVariable String username) {
@@ -61,7 +56,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAdminByUsername/{username}")
-    @ResponseBody
     public List<UserDto> getAdminByUsername(
             @RequestBody
             @PathVariable String username) {
@@ -69,25 +63,21 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllCustomers")
-    @ResponseBody
     public List<UserDto> getAllCustomers() {
         return userService.getAllCustomers();
     }
 
     @GetMapping("/getAllSellers")
-    @ResponseBody
     public List<UserDto> getAllSellers() {
         return userService.getAllSellers();
     }
 
     @GetMapping("/getAllAdmins")
-    @ResponseBody
     public List<UserDto> getAllAdmins() {
         return userService.getAllAdmins();
     }
 
     @GetMapping("/getSellerById/{id}")
-    @ResponseBody
     public List<UserDto> getSellerById(
             @RequestBody
             @PathVariable Long id) {
@@ -95,7 +85,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getCustomerById/{id}")
-    @ResponseBody
     public List<UserDto> getCustomerById(
             @RequestBody
             @PathVariable Long id) {
@@ -103,7 +92,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAdminById/{id}")
-    @ResponseBody
     public List<UserDto> getAdminById(
             @RequestBody
             @PathVariable Long id) {
@@ -111,13 +99,11 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllUsers")
-    @ResponseBody
     public List<UserDto> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("/getAdminByFullName/{fullName}")
-    @ResponseBody
     public List<UserDto> getAdminByFullName(
             @RequestBody
             @PathVariable String fullName) {
@@ -125,7 +111,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getSellerByFullName/{fullName}")
-    @ResponseBody
     public List<UserDto> getSellerByFullName(
             @RequestBody
             @PathVariable String fullName) {
@@ -133,7 +118,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getCustomerByFullName/{fullName}")
-    @ResponseBody
     public List<UserDto> getCustomerByFullName(
             @RequestBody
             @PathVariable String fullName) {
@@ -141,7 +125,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllUsersByFullName/{fullName}")
-    @ResponseBody
     public List<UserDto> getAllUsersByFullName(
             @RequestBody
             @PathVariable String fullName) {
@@ -149,7 +132,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllUsersByUsername/{username}")
-    @ResponseBody
     public List<UserDto> getAllUsersByUsername(
             @RequestBody
             @PathVariable String username) {
@@ -157,7 +139,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllUsersByEmail/{email}")
-    @ResponseBody
     public List<UserDto> getAllUsersByEmail(
             @RequestBody
             @PathVariable String email) {
@@ -165,7 +146,6 @@ public class UserController implements IUserController {
     }
 
     @GetMapping("/getAllUsersById/{id}")
-    @ResponseBody
     public List<UserDto> getAllUsersById(
             @RequestBody
             @PathVariable Long id) {

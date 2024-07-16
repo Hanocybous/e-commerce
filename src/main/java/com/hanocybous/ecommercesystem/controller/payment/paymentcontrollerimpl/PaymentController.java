@@ -23,14 +23,12 @@ public class PaymentController implements IPaymentController {
     }
 
     @GetMapping("/payment/total")
-    @ResponseBody
     public Double getTotalAmountOfPayments(@RequestBody(required = false) String paymentMethod,
                                            @RequestBody(required = false) String paymentStatus) {
         return paymentService.getTotalAmountOfPayments();
     }
 
     @GetMapping("/payment/{paymentStatus}")
-    @ResponseBody
     public Double getTotalAmountOfPaymentsByPaymentStatus(
             @RequestBody
             @PathVariable String paymentStatus) {
@@ -41,7 +39,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @GetMapping("/payment/{paymentMethod}/{paymentStatus}")
-    @ResponseBody
     public Double getTotalAmountOfPaymentsByPaymentMethodAndPaymentStatus(
             @RequestBody
             @PathVariable String paymentMethod,
@@ -62,7 +59,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @PostMapping("/payment/create")
-    @ResponseBody
     public Double createPayment(@RequestBody String paymentMethod,
                                 @RequestBody Double amount,
                                 @RequestBody Long orderId) {
@@ -87,7 +83,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @GetMapping("/payment/{paymentId}")
-    @ResponseBody
     public List<PaymentDto> getPaymentById(
             @RequestBody
             @PathVariable Long paymentId) {
@@ -95,7 +90,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @GetMapping("/payment/{paymentMethod}")
-    @ResponseBody
     public List<PaymentDto> getPaymentByPaymentMethod(
             @RequestBody
             @PathVariable String paymentMethod) {
@@ -103,7 +97,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @DeleteMapping("/payment/{paymentId}")
-    @ResponseBody
     public void deletePaymentById(
             @RequestBody
             @PathVariable Long paymentId) {
@@ -111,7 +104,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @DeleteMapping("/payment/{paymentMethod}")
-    @ResponseBody
     public void deletePaymentByPaymentMethod(
             @RequestBody
             @PathVariable String paymentMethod) {
@@ -119,7 +111,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @DeleteMapping("/payment/{paymentStatus}")
-    @ResponseBody
     public void deletePaymentByPaymentStatus(
             @RequestBody
             @PathVariable String paymentStatus) {
@@ -127,7 +118,6 @@ public class PaymentController implements IPaymentController {
     }
 
     @GetMapping("/payment/all")
-    @ResponseBody
     public List<PaymentDto> getAllPayments() {
         return paymentService.findAllPayments();
     }

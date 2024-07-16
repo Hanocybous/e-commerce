@@ -21,7 +21,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getTotalByOrderId/{orderId}")
-    @ResponseBody
     public Double getTotalByOrderId(
             @RequestBody
             @PathVariable Long orderId) {
@@ -29,7 +28,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getOrderItemByProductId/{productId}")
-    @ResponseBody
     public List<OrderItem> getOrderItemByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -37,7 +35,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getOrderItemByOrderId/{orderId}")
-    @ResponseBody
     public List<OrderItem> getOrderItemByOrderId(
             @RequestBody
             @PathVariable Long orderId) {
@@ -45,7 +42,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getOrderItemById/{orderItemId}")
-    @ResponseBody
     public OrderItem getOrderItemById(
             @RequestBody
             @PathVariable Long orderItemId) {
@@ -53,7 +49,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @PostMapping("/saveOrderItem")
-    @ResponseBody
     public OrderItem saveOrderItem(
             @RequestBody
             @ModelAttribute OrderItem orderItem) {
@@ -61,7 +56,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteOrderItemById/{orderItemId}")
-    @ResponseBody
     public void deleteOrderItemById(
             @RequestBody
             @PathVariable Long orderItemId) {
@@ -69,7 +63,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getOrderItemByOrderIdAndProductId/{orderId}/{productId}")
-    @ResponseBody
     public List<OrderItem> getOrderItemByOrderIdAndProductId(
             @RequestBody
             @PathVariable Long orderId,
@@ -78,25 +71,21 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getAllOrderItemsSortedByQuantity")
-    @ResponseBody
     public List<OrderItem> getAllOrderItemsSortedByQuantity() {
         return orderItemService.getAllOrderItemsSortedByQuantity();
     }
 
     @GetMapping("/getAllOrderItemsSortedByPrice")
-    @ResponseBody
     public List<OrderItem> getAllOrderItemsSortedByPrice() {
         return orderItemService.getAllOrderItemsSortedByPrice();
     }
 
     @GetMapping("/getAllOrderItemsSortedByTotal")
-    @ResponseBody
     public List<OrderItem> getAllOrderItemsSortedByTotal() {
         return orderItemService.getAllOrderItemsSortedByTotal();
     }
 
     @PostMapping("/save")
-    @ResponseBody
     public void save(
             @RequestBody
             @ModelAttribute OrderItem orderItem) {
@@ -104,7 +93,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/delete")
-    @ResponseBody
     public void delete(
             @RequestBody
             @ModelAttribute OrderItem orderItem) {
@@ -112,7 +100,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteById/{id}")
-    @ResponseBody
     public void deleteById(
             @RequestBody
             @PathVariable Long id) {
@@ -120,7 +107,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteOrderItemByOrderIdAndProductId/{orderId}/{productId}")
-    @ResponseBody
     public void deleteOrderItemByOrderIdAndProductId(
             @RequestBody
             @PathVariable Long orderId,
@@ -129,7 +115,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteOrderItemByOrderId/{orderId}")
-    @ResponseBody
     public void deleteOrderItemByOrderId(
             @RequestBody
             @PathVariable Long orderId) {
@@ -137,7 +122,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteOrderItemByProductId/{productId}")
-    @ResponseBody
     public void deleteOrderItemByProductId(
             @RequestBody
             @PathVariable Long productId) {
@@ -145,13 +129,11 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getAllOrderItems")
-    @ResponseBody
     public List<OrderItem> getAllOrderItems() {
         return orderItemService.getAllOrderItems();
     }
 
     @GetMapping("/getAllOrderItemsByOrderIds/{orderIds}")
-    @ResponseBody
     public List<OrderItem> getAllOrderItemsByOrderIds(
             @RequestBody
             @PathVariable List<Long> orderIds) {
@@ -159,7 +141,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @GetMapping("/getAllOrderItemsByProductIds/{productIds}")
-    @ResponseBody
     public List<OrderItem> getAllOrderItemsByProductIds(
             @RequestBody
             @PathVariable List<Long> productIds) {
@@ -167,13 +148,11 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteAll")
-    @ResponseBody
     public void deleteAll() {
         orderItemService.deleteAll();
     }
 
     @DeleteMapping("/deleteAll/{orderItems}")
-    @ResponseBody
     public void deleteAll(
             @RequestBody
             @PathVariable List<OrderItem> orderItems) {
@@ -181,7 +160,6 @@ public class OrderItemController implements IOrderItemController {
     }
 
     @DeleteMapping("/deleteAllById/{ids}")
-    @ResponseBody
     public void deleteAllById(
             @RequestBody
             @PathVariable List<Long> ids) {

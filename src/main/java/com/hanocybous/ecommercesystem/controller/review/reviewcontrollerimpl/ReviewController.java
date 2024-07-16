@@ -22,7 +22,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/product/{productId}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByProductId(
             @PathVariable
             @RequestBody Long productId) {
@@ -30,7 +29,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/product/{productId}/customer/{customerId}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByProductIdAndUserId(
             @PathVariable
             @RequestBody Long productId,
@@ -41,7 +39,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/customer/{customerId}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByCustomerId(
             @PathVariable
             @RequestBody Long customerId) {
@@ -49,7 +46,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/title/{title}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByTitle(
             @PathVariable
             @RequestBody String title) {
@@ -57,7 +53,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/rating/{rating}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByRating(
             @PathVariable
             @RequestBody Integer rating) {
@@ -65,7 +60,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/comment/{comment}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByComment(
             @PathVariable
             @RequestBody String comment) {
@@ -73,7 +67,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/reviewDate/{reviewDate}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByReviewDate(
             @PathVariable
             @RequestBody LocalDateTime reviewDate) {
@@ -81,7 +74,6 @@ public class ReviewController implements IReviewController {
     }
 
     @GetMapping("/review/reviewDate/{reviewDateStart}/{reviewDateEnd}")
-    @ResponseBody
     public List<ReviewDto> getReviewsByReviewDateBetween(
             @PathVariable
             @RequestBody LocalDateTime reviewDateStart,
@@ -92,21 +84,18 @@ public class ReviewController implements IReviewController {
     }
 
     @PostMapping("/review")
-    @ResponseBody
     public ReviewDto addReview(
             @RequestBody ReviewDto reviewDto) {
         return reviewService.addReview(reviewDto);
     }
 
     @PutMapping("/review")
-    @ResponseBody
     public ReviewDto updateReview(
             @RequestBody ReviewDto reviewDto) {
         return reviewService.updateReview(reviewDto);
     }
 
     @DeleteMapping("/review/{reviewId}")
-    @ResponseBody
     public void deleteReview(
             @PathVariable
             @RequestBody Long reviewId) {
@@ -114,7 +103,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/product/{productId}")
-    @ResponseBody
     public void deleteReviewsByProductId(
             @PathVariable
             @RequestBody Long productId) {
@@ -122,7 +110,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/customer/{customerId}")
-    @ResponseBody
     public void deleteReviewsByCustomerId(
             @PathVariable
             @RequestBody Long customerId) {
@@ -130,7 +117,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/title/{title}")
-    @ResponseBody
     public void deleteReviewsByTitle(
             @PathVariable
             @RequestBody String title) {
@@ -138,7 +124,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/rating/{rating}")
-    @ResponseBody
     public void deleteReviewsByRating(
             @PathVariable
             @RequestBody Integer rating) {
@@ -146,7 +131,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/comment/{comment}")
-    @ResponseBody
     public void deleteReviewsByComment(
             @PathVariable
             @RequestBody String comment) {
@@ -154,7 +138,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/reviewDate/{reviewDate}")
-    @ResponseBody
     public void deleteReviewsByReviewDate(
             @PathVariable
             @RequestBody LocalDateTime reviewDate) {
@@ -162,7 +145,6 @@ public class ReviewController implements IReviewController {
     }
 
     @DeleteMapping("/review/{reviewDateStart}/{reviewDateEnd}")
-    @ResponseBody
     public void deleteReviewsByReviewDateBetween(
             @PathVariable
             @RequestBody LocalDateTime reviewDateStart,

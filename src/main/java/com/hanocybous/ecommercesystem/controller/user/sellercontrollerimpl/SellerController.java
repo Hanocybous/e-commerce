@@ -21,7 +21,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyName/{companyName}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyName(
             @RequestBody
             @PathVariable String companyName) {
@@ -29,7 +28,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyAddress/{companyAddress}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyAddress(
             @RequestBody
             @PathVariable String companyAddress) {
@@ -37,7 +35,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyPhoneNumber(
             @RequestBody
             @PathVariable String companyPhoneNumber) {
@@ -45,7 +42,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyName/{companyName}/companyAddress/{companyAddress}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyNameAndCompanyAddress(
             @RequestBody
             @PathVariable String companyName,
@@ -55,7 +51,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyName/{companyName}/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyNameAndCompanyPhoneNumber(
             @RequestBody
             @PathVariable String companyName,
@@ -65,7 +60,6 @@ public class SellerController implements ISellerController {
     }
 
     @GetMapping("/companyAddress/{companyAddress}/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public List<SellerDto> getSellerByCompanyAddressAndCompanyPhoneNumber(
             @RequestBody
             @PathVariable String companyAddress,
@@ -75,7 +69,6 @@ public class SellerController implements ISellerController {
     }
 
     @DeleteMapping("/companyName/{companyName}")
-    @ResponseBody
     public void deleteSellerByCompanyName(
             @RequestBody
             @PathVariable String companyName) {
@@ -83,7 +76,6 @@ public class SellerController implements ISellerController {
     }
 
     @DeleteMapping("/companyAddress/{companyAddress}")
-    @ResponseBody
     public void deleteSellerByCompanyAddress(
             @RequestBody
             @PathVariable String companyAddress) {
@@ -91,7 +83,6 @@ public class SellerController implements ISellerController {
     }
 
     @DeleteMapping("/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public void deleteSellerByCompanyPhoneNumber(
             @RequestBody
             @PathVariable String companyPhoneNumber) {
@@ -99,7 +90,6 @@ public class SellerController implements ISellerController {
     }
 
     @DeleteMapping("/companyName/{companyName}/companyAddress/{companyAddress}")
-    @ResponseBody
     public void deleteSellerByCompanyNameAndCompanyAddress(
             @RequestBody
             @PathVariable String companyName,
@@ -109,7 +99,6 @@ public class SellerController implements ISellerController {
     }
 
     @PostMapping("/companyName/{companyName}/companyAddress/{companyAddress}")
-    @ResponseBody
     public void updateSellerByCompanyName(
             @RequestBody
             @PathVariable String companyName,
@@ -119,7 +108,6 @@ public class SellerController implements ISellerController {
     }
 
     @PostMapping("/companyName/{companyName}/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public void updateSellerByCompanyAddress(
             @RequestBody
             @PathVariable String companyName,
@@ -129,7 +117,6 @@ public class SellerController implements ISellerController {
     }
 
     @PostMapping("/companyAddress/{companyAddress}/companyPhoneNumber/{companyPhoneNumber}")
-    @ResponseBody
     public void updateSellerByCompanyPhoneNumber(
             @RequestBody
             @PathVariable String companyAddress,

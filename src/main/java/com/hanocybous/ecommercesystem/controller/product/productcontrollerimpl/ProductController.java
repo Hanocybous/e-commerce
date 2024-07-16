@@ -21,7 +21,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/isProductExisting/{id}")
-    @ResponseBody
     public boolean isProductExisting(
             @RequestBody
             @PathVariable Long id) {
@@ -29,7 +28,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByCategory/{category}")
-    @ResponseBody
     public List<ProductDto> getProductsByCategory(
             @RequestBody
             @PathVariable String category) {
@@ -37,7 +35,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByName/{name}")
-    @ResponseBody
     public List<ProductDto> getProductsByName(
             @RequestBody
             @PathVariable String name) {
@@ -45,7 +42,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByNameAndCategory/{name}/{category}")
-    @ResponseBody
     public List<ProductDto> getProductsByNameAndCategory(
             @RequestBody
             @PathVariable String name,
@@ -55,7 +51,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByPrice/{price}")
-    @ResponseBody
     public List<ProductDto> getProductsByPrice(
             @RequestBody
             @PathVariable Double price) {
@@ -63,7 +58,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByPriceAndCategory/{price}/{category}")
-    @ResponseBody
     public List<ProductDto> getProductsByPriceAndCategory(
             @RequestBody
             @PathVariable Double price,
@@ -73,7 +67,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByPriceRange/{minPrice}/{maxPrice}")
-    @ResponseBody
     public List<ProductDto> getProductsByPriceRange(
             @RequestBody
             @PathVariable Double minPrice,
@@ -83,7 +76,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByPriceRangeAndCategory/{minPrice}/{maxPrice}/{category}")
-    @ResponseBody
     public List<ProductDto> getProductsByPriceRangeAndCategory(
             @RequestBody
             @PathVariable Double minPrice,
@@ -95,7 +87,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByQuantity/{quantity}")
-    @ResponseBody
     public List<ProductDto> getProductsByQuantity(
             @RequestBody
             @PathVariable Integer quantity) {
@@ -103,7 +94,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getProductsByQuantityAndCategory/{quantity}/{category}")
-    @ResponseBody
     public List<ProductDto> getProductsByQuantityAndCategory(
             @RequestBody
             @PathVariable Integer quantity,
@@ -113,7 +103,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getAllProductsSortedByPrice/{price}")
-    @ResponseBody
     public List<ProductDto> getAllProductsSortedByPrice(
             @RequestBody
             @PathVariable Double price) {
@@ -121,7 +110,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getAllProductsSortedByQuantity/{quantity}")
-    @ResponseBody
     public List<ProductDto> getAllProductsSortedByQuantity(
             @RequestBody
             @PathVariable Integer quantity) {
@@ -129,7 +117,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getAllProductsSortedByName/{name}")
-    @ResponseBody
     public List<ProductDto> getAllProductsSortedByName(
             @RequestBody
             @PathVariable String name) {
@@ -137,7 +124,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getAllProductsSortedByCategory/{category}")
-    @ResponseBody
     public List<ProductDto> getAllProductsSortedByCategory(
             @RequestBody
             @PathVariable String category) {
@@ -145,7 +131,6 @@ public class ProductController implements IProductController {
     }
 
     @GetMapping("/getAllProductsSortedByPriceRange/{minPrice}/{maxPrice}")
-    @ResponseBody
     public List<ProductDto> getAllProductsSortedByPriceRange(
             @RequestBody
             @PathVariable Double minPrice,
@@ -155,7 +140,6 @@ public class ProductController implements IProductController {
     }
 
     @DeleteMapping("/deleteProductById/{id}")
-    @ResponseBody
     public void deleteProductById(
             @RequestBody
             @PathVariable Long id) {
@@ -163,7 +147,6 @@ public class ProductController implements IProductController {
     }
 
     @DeleteMapping("/deleteProductByName/{name}")
-    @ResponseBody
     public void deleteProductByName(
             @RequestBody
             @PathVariable String name) {
@@ -171,7 +154,6 @@ public class ProductController implements IProductController {
     }
 
     @DeleteMapping("/deleteProductByCategory/{category}")
-    @ResponseBody
     public void deleteProductByCategory(
             @RequestBody
             @PathVariable String category) {
@@ -179,7 +161,6 @@ public class ProductController implements IProductController {
     }
 
     @DeleteMapping("/deleteProductByPrice/{price}")
-    @ResponseBody
     public void deleteProductByPrice(
             @RequestBody
             @PathVariable Double price) {
@@ -187,7 +168,6 @@ public class ProductController implements IProductController {
     }
 
     @DeleteMapping("/deleteProductByQuantity/{quantity}")
-    @ResponseBody
     public void deleteProductByQuantity(
             @RequestBody
             @PathVariable Integer quantity) {
@@ -195,7 +175,6 @@ public class ProductController implements IProductController {
     }
 
     @PutMapping("/updateProductById/{id}")
-    @ResponseBody
     public void updateProductById(
             @RequestBody
             @PathVariable Long id,
@@ -204,7 +183,6 @@ public class ProductController implements IProductController {
     }
 
     @PutMapping("/updateProductByName/{name}")
-    @ResponseBody
     public void updateProductByName(
             @RequestBody
             @PathVariable String name,
@@ -213,7 +191,6 @@ public class ProductController implements IProductController {
     }
 
     @PutMapping("/updateProductByCategory/{category}")
-    @ResponseBody
     public void updateProductByCategory(
             @RequestBody
             @PathVariable String category,

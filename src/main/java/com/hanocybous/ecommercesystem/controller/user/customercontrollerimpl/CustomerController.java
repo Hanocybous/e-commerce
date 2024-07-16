@@ -21,7 +21,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByAddress/{address}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByAddress(
             @RequestBody
             @PathVariable String address) {
@@ -29,7 +28,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByPhoneNumber/{phoneNumber}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByPhoneNumber(
             @RequestBody
             @PathVariable String phoneNumber) {
@@ -37,7 +35,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByCity/{city}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByCity(
             @RequestBody
             @PathVariable String city) {
@@ -45,7 +42,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByCountry/{country}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByCountry(
             @RequestBody
             @PathVariable String country) {
@@ -53,7 +49,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByState/{state}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByState(
             @RequestBody
             @PathVariable String state) {
@@ -61,7 +56,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByZipCode/{zipCode}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByZipCode(
             @RequestBody
             @PathVariable String zipCode) {
@@ -69,7 +63,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByAddressAndPhoneNumber/{address}/{phoneNumber}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByAddressAndPhoneNumber(
             @RequestBody
             @PathVariable String address,
@@ -78,7 +71,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByFullNameAndZipCode/{fullName}/{zipCode}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByFullNameAndZipCode(
             @RequestBody
             @PathVariable String fullName,
@@ -87,7 +79,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByFullNameAndPhoneNumber/{fullName}/{phoneNumber}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByFullNameAndPhoneNumber(
             @RequestBody
             @PathVariable String fullName,
@@ -96,7 +87,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByFullNameAndAddress/{fullName}/{state}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByFullNameAndState(
             @RequestBody
             @PathVariable String fullName,
@@ -105,7 +95,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @GetMapping("/getCustomerByFullNameAndCity/{fullName}/{country}")
-    @ResponseBody
     public List<CustomerDto> getCustomerByFullNameAndCountry(
             @RequestBody
             @PathVariable String fullName,
@@ -114,7 +103,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByFullNameAndZipCode/{fullName}/{zipCode}")
-    @ResponseBody
     public void deleteCustomerByFullNameAndZipCode(
             @RequestBody
             @PathVariable String fullName,
@@ -123,7 +111,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByFullNameAndState/{fullName}/{state}")
-    @ResponseBody
     public void deleteCustomerByFullNameAndState(
             @RequestBody
             @PathVariable String fullName,
@@ -132,7 +119,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByFullNameAndPhoneNumber/{fullName}/{phoneNumber}")
-    @ResponseBody
     public void deleteCustomerByFullNameAndPhoneNumber(
             @RequestBody
             @PathVariable String fullName,
@@ -141,7 +127,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByFullNameAndCountry/{fullName}/{country}")
-    @ResponseBody
     public void deleteCustomerByFullNameAndCountry(
             @RequestBody
             @PathVariable String fullName,
@@ -150,7 +135,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByFullNameAndCity/{address}")
-    @ResponseBody
     public void deleteCustomerByAddress(
             @RequestBody
             @PathVariable String address) {
@@ -158,7 +142,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByCity/{city}")
-    @ResponseBody
     public void deleteCustomerByCity(
             @RequestBody
             @PathVariable String city) {
@@ -166,7 +149,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByCountry/{country}")
-    @ResponseBody
     public void deleteCustomerByCountry(
             @RequestBody
             @PathVariable String country) {
@@ -174,7 +156,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByState/{state}")
-    @ResponseBody
     public void deleteCustomerByState(
             @RequestBody
             @PathVariable String state) {
@@ -182,7 +163,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByZipCode/{zipCode}")
-    @ResponseBody
     public void deleteCustomerByZipCode(
             @RequestBody
             @PathVariable String zipCode) {
@@ -190,7 +170,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerByPhoneNumber/{phoneNumber}")
-    @ResponseBody
     public void deleteCustomerByPhoneNumber(
             @RequestBody
             @PathVariable String phoneNumber) {
@@ -198,8 +177,7 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerById/{id}")
-    @ResponseBody
-        public void updateCustomerById(
+    public void updateCustomerById(
             @RequestBody
             @PathVariable Long id,
             @RequestBody
@@ -220,7 +198,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByFullName/{fullName}")
-    @ResponseBody
     public void updateCustomerFullName(
             @RequestBody
             @PathVariable String fullName,
@@ -230,7 +207,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByAddress/{address}")
-    @ResponseBody
     public void updateCustomerAddress(
             @RequestBody
             @PathVariable String address,
@@ -240,7 +216,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByCity/{city}")
-    @ResponseBody
     public void updateCustomerCity(
             @RequestBody
             @PathVariable String city,
@@ -250,7 +225,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByState/{state}")
-    @ResponseBody
     public void updateCustomerState(
             @RequestBody
             @PathVariable String state,
@@ -260,7 +234,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByCountry/{country}")
-    @ResponseBody
     public void updateCustomerCountry(
             @RequestBody
             @PathVariable String country,
@@ -270,7 +243,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByZipCode/{zipCode}")
-    @ResponseBody
     public void updateCustomerZipCode(
             @RequestBody
             @PathVariable String zipCode,
@@ -280,7 +252,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerByPhoneNumber/{phoneNumber}")
-    @ResponseBody
     public void updateCustomerPhoneNumber(
             @RequestBody
             @PathVariable String phoneNumber,
@@ -290,7 +261,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @DeleteMapping("/deleteCustomerById/{id}")
-    @ResponseBody
     public void deleteCustomerById(
             @RequestBody
             @PathVariable Long id) {
@@ -305,7 +275,6 @@ public class CustomerController implements ICustomerController {
     }
 
     @PostMapping("/updateCustomerFullNameAndZipCode/{fullName}/{zipCode}")
-    @ResponseBody
     public void updateCustomerFullNameAndZipCode(
             @RequestBody
             @PathVariable String fullName,
