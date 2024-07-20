@@ -1,0 +1,65 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Mark files that should always have CRLF line endings on checkout
+*.bat text eol=crlf
+
+# Mark files that should always have LF line endings on checkout
+*.sh text eol=lf
+
+# Handle binary files (no automatic line ending conversion)
+*.jar binary
+*.war binary
+*.ear binary
+*.class binary
+*.exe binary
+*.dll binary
+*.so binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+
+# Define handling for source code files
+*.java text diff=java
+*.xml text linguist-language=XML
+*.html text
+*.css text
+*.js text
+*.properties text
+*.yml text linguist-language=YAML
+*.yaml text linguist-language=YAML
+*.json text linguist-language=JSON
+
+# Documentation files
+*.md text linguist-language=Markdown
+*.txt text
+
+# Ignore IntelliJ IDEA specific files
+*.iml text linguist-language=IDEA
+.idea/ text linguist-language=IDEA
+
+# Ignore Maven target directory
+target/ text
+
+# Ignore logs directory
+logs/ text
+*.log text
+
+# Ignore SQL files
+*.sql text linguist-language=SQL
+
+# Ignore database related files
+db/ text linguist-language=SQL
+
+# Ignore .github workflows and templates
+.github/ text linguist-language=YAML
+
+# Handle line endings for Windows PowerShell scripts
+*.ps1 text eol=crlf
