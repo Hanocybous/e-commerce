@@ -1,5 +1,6 @@
 scrape_configs:
-  - job_name: 'spring-boot-app'
-    metrics_path: '/actuator/prometheus'
+  - job_name: 'spring-actuator'  # This is the name of the job
+    metrics_path: '/actuator/prometheus'  # This is the endpoint exposed by Spring Boot Actuator
+    scrape_interval: 15s # This can be adjusted based on our needs
     static_configs:
-      - targets: ['localhost:8080']
+      - targets: ['localhost:8080']  # This is the address of our Spring Boot application
