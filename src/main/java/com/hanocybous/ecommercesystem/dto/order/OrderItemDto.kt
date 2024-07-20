@@ -1,65 +1,23 @@
-package com.hanocybous.ecommercesystem.dto.order;
+package com.hanocybous.ecommercesystem.dto.order
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-
-public record OrderItemDto(
-        Long id,
-        Long productId,
-        Long orderId,
-        String productName,
-        Double productPrice,
-        Integer quantity,
-        Double totalAmount
+data class OrderItemDto(
+    val id: Long,
+    val productId: Long,
+    val orderId: Long,
+    val productName: String,
+    val productPrice: Double,
+    val quantity: Int,
+    val totalAmount: Double
 ) {
 
-    public OrderItemDto {
-        Objects.requireNonNull(id);
-        Objects.requireNonNull(productId);
-        Objects.requireNonNull(orderId);
-        Objects.requireNonNull(productName);
-        Objects.requireNonNull(productPrice);
-        Objects.requireNonNull(quantity);
-        Objects.requireNonNull(totalAmount);
-
-        if (id < 0) {
-            throw new IllegalArgumentException("id cannot be negative");
-        }
-        if (productId < 0) {
-            throw new IllegalArgumentException("productId cannot be negative");
-        }
-        if (orderId < 0) {
-            throw new IllegalArgumentException("orderId cannot be negative");
-        }
-        if (productName.isBlank()) {
-            throw new IllegalArgumentException("productName cannot be blank");
-        }
-        if (productPrice < 0) {
-            throw new IllegalArgumentException("productPrice cannot be negative");
-        }
-        if (quantity < 0) {
-            throw new IllegalArgumentException("quantity cannot be negative");
-        }
-        if (totalAmount < 0) {
-            throw new IllegalArgumentException("totalAmount cannot be negative");
-        }
-
-    }
-
-    @Contract(pure = true)
-    @Override
-    public @NotNull String toString() {
-        return "OrderItemDto{" +
-                "id=" + id +
-                ", productId=" + productId +
-                ", orderId=" + orderId +
-                ", productName='" + productName + '\'' +
-                ", productPrice=" + productPrice +
-                ", quantity=" + quantity +
-                ", totalAmount=" + totalAmount +
-                '}';
+    init {
+        require(id >= 0) { "id cannot be negative" }
+        require(productId >= 0) { "productId cannot be negative" }
+        require(orderId >= 0) { "orderId cannot be negative" }
+        require(productName.isNotBlank()) { "productName cannot be blank" }
+        require(productPrice >= 0) { "productPrice cannot be negative" }
+        require(quantity >= 0) { "quantity cannot be negative" }
+        require(totalAmount >= 0) { "totalAmount cannot be negative" }
     }
 
 }
