@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 @Entity
 @AllArgsConstructor
@@ -23,25 +24,55 @@ public final class Customer extends User {
     public Customer(String fullName,
                     String username,
                     String email,
-                    String password,
-                    String address,
-                    String phoneNumber,
-                    String city,
-                    String country,
-                    String zipCode,
-                    String state) {
+                    String password) {
         super(fullName, username, email, password);
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.city = city;
-        this.country = country;
-        this.zipCode = zipCode;
-        this.state = state;
     }
 
     @Override
     public UserType getRole() {
         return UserType.fromString("CUSTOMER");
+    }
+
+    @Override
+    public @NotNull String toString() {
+        return "Customer{" +
+                "address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", state='" + state + '\'' +
+                "} ";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Customer customer)) return false;
+
+        return getAddress().equals(customer.getAddress()) &&
+                getPhoneNumber().equals(customer.getPhoneNumber()) &&
+                getCity().equals(customer.getCity()) &&
+                getCountry().equals(customer.getCountry()) &&
+                getZipCode().equals(customer.getZipCode()) &&
+                getState().equals(customer.getState());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31;
+        result += getAddress().hashCode();
+        result += getPhoneNumber().hashCode();
+        result += getCity().hashCode();
+        result += getCountry().hashCode();
+        result += getZipCode().hashCode();
+        result += getState().hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean canEqual(Object obj) {
+        return obj instanceof Customer;
     }
 
 }

@@ -39,4 +39,12 @@ public abstract sealed class User permits Customer, Admin, Seller {
 
     public abstract UserType getRole();
 
+    public abstract String toString();
+
+    public abstract boolean equals(Object obj);
+
+    public abstract int hashCode();
+
+    public abstract boolean canEqual(Object obj);
+
 }

@@ -104,28 +104,57 @@ public class Review {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Review review)) return false;
-        if (!super.equals(o)) return false;
-        if (!getId().equals(review.getId())) return false;
-        if (!getProduct().equals(review.getProduct())) return false;
-        if (!getCustomer().equals(review.getCustomer())) return false;
-        if (!getRating().equals(review.getRating())) return false;
-        if (!getComment().equals(review.getComment())) return false;
-        if (!getReviewDate().equals(review.getReviewDate())) return false;
-        return getIsApproved().equals(review.getIsApproved());
+
+        return getProduct().equals(review.getProduct()) &&
+                getCustomer().equals(review.getCustomer()) &&
+                getRating().equals(review.getRating()) &&
+                getComment().equals(review.getComment());
+
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + getId().hashCode();
+        int result = 31;
         result = 31 * result + getProduct().hashCode();
         result = 31 * result + getCustomer().hashCode();
         result = 31 * result + getRating().hashCode();
         result = 31 * result + getComment().hashCode();
-        result = 31 * result + getReviewDate().hashCode();
-        result = 31 * result + getIsApproved().hashCode();
         return result;
     }
 
+    public void approveReview() {
+        this.isApproved = true;
+    }
+
+    public void disapproveReview() {
+        this.isApproved = false;
+    }
+
+    public void updateReview(String title, Integer rating, String comment) {
+        this.title = title;
+        this.rating = rating;
+        this.comment = comment;
+    }
+
+    public void updateReview(Integer rating, String comment) {
+        this.rating = rating;
+        this.comment = comment;
+    }
+
+    public void updateReview(String comment) {
+        this.comment = comment;
+    }
+
+    public void updateReviewTitle(String title) {
+        this.title = title;
+    }
+
+    public void updateReviewRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public void updateReviewComment(String comment) {
+        this.comment = comment;
+    }
 
 }

@@ -91,21 +91,17 @@ public class EOrder {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof EOrder EOrder)) return false;
-        return getId().equals(EOrder.getId());
+        if (o == null || getClass() != o.getClass()) return false;
+        EOrder order = (EOrder) o;
+        return orderItems.equals(order.orderItems);
     }
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
-        result = 31 * result + getUserId().hashCode();
-        result = 31 * result + getOrderItems().hashCode();
-        result = 31 * result + getOrderDate().hashCode();
-        result = 31 * result + getStatus().hashCode();
-        result = 31 * result + getShippingAddress().hashCode();
-        result = 31 * result + getPaymentMethod().hashCode();
-        result = 31 * result + getTotalAmount().hashCode();
-        return result;
+        for (OrderItem orderItem : orderItems) {
+            return orderItem.hashCode();
+        }
+        return 0;
     }
 
     public void addOrderItem(OrderItem orderItem) {
@@ -157,7 +153,35 @@ public class EOrder {
                 .ifPresent(orderItem -> orderItems.remove(orderItem));
     }
 
+    // update the total of an orderitem based on the product id
+    public void updateOrderItemTotal(Long productId, Double total) {
+        orderItems.stream()
+                .filter(orderItem -> orderItem.getProduct().getId().equals(productId))
+                .findFirst()
+                .ifPresent(orderItem -> orderItem.setTotal(total));
+    }
+
+    // calculate the total of an order
+    public Double calculateTotal() {
+        return orderItems.stream()
+                .mapToDouble(OrderItem::getTotal)
+                .sum();
+    }
+
     public void addOrderItem(Product product) {
         orderItems.add(new OrderItem(product, 1, product.getPrice()));
     }
+
+    public void updateOrderItem(OrderItem orderItem, OrderItem updatedOrderItem) {
+        orderItems.set(orderItems.indexOf(orderItem), updatedOrderItem);
+    }
+
+    public void updateOrderItemQuantity(@NotNull OrderItem orderItem, int quantity) {
+        orderItem.setQuantity(quantity);
+    }
+
+    public void updateOrderItemTotal(@NotNull OrderItem orderItem, double total) {
+        orderItem.setTotal(total);
+    }
+
 }

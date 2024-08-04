@@ -60,6 +60,14 @@ public final class Product {
         this.quantity = quantity;
     }
 
+    public Product(String name,
+                   double price,
+                   int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     public boolean isAvailable() {
         return quantity > 0;
     }
@@ -67,8 +75,9 @@ public final class Product {
     public void decreaseQuantity() {
         if (quantity > 0) {
             quantity--;
+        } else {
+            throw new IllegalArgumentException("Quantity cannot be less than 0");
         }
-        quantity = 0;
     }
 
     public void increaseQuantity() {
@@ -125,7 +134,9 @@ public final class Product {
 
     @Override
     public int hashCode() {
-        return Long.hashCode(id);
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
 }

@@ -2,6 +2,7 @@ package com.hanocybous.ecommercesystem.service.cart.cartimpl;
 
 import com.hanocybous.ecommercesystem.dto.cart.CartDto;
 import com.hanocybous.ecommercesystem.entity.cart.Cart;
+import com.hanocybous.ecommercesystem.entity.product.Product;
 import com.hanocybous.ecommercesystem.repository.cart.CartRepository;
 import com.hanocybous.ecommercesystem.service.cart.ICartService;
 import lombok.Getter;
@@ -141,4 +142,21 @@ public class CartService implements ICartService {
         cartRepository.deleteCartByUserIdAndProductId(userId, productId);
     }
 
+    public void addProductToCart(@NotNull Cart cart, Product product) {
+        if (product == null) {
+            return;
+        }
+        cart.addProduct(product);
+    }
+
+    public void removeProductFromCart(Cart cart, Product product) {
+        if (product == null) {
+            return;
+        }
+        cart.removeProduct(product);
+    }
+
+    public double getTotalPrice(Cart cart) {
+        return cart.getProducts().stream().mapToDouble(Product::getPrice).sum();
+    }
 }

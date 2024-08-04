@@ -1,6 +1,7 @@
 package com.hanocybous.ecommercesystem.service.product.productimpl;
 
 import com.hanocybous.ecommercesystem.dto.product.ProductDto;
+import com.hanocybous.ecommercesystem.entity.product.Product;
 import com.hanocybous.ecommercesystem.repository.product.ProductRepository;
 import com.hanocybous.ecommercesystem.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,4 +190,10 @@ public class ProductService implements IProductService {
     }
 
 
+    public void addProduct(Product product) {
+        if (product == null) {
+            return;
+        }
+        productRepository.save(product);
+    }
 }

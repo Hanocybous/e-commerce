@@ -60,7 +60,6 @@ public class OrderItem {
         if (this == o) return true;
         if (!(o instanceof OrderItem orderItem)) return false;
 
-        if (!id.equals(orderItem.id)) return false;
         if (!product.equals(orderItem.product)) return false;
         if (!EOrder.equals(orderItem.EOrder)) return false;
         if (!quantity.equals(orderItem.quantity)) return false;
@@ -70,13 +69,7 @@ public class OrderItem {
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + product.hashCode();
-        result = 31 * result + EOrder.hashCode();
-        result = 31 * result + quantity.hashCode();
-        result = 31 * result + price.hashCode();
-        result = 31 * result + total.hashCode();
-        return result;
+        return total.hashCode();
     }
 
 }

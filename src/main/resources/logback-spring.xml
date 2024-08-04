@@ -3,7 +3,7 @@
         <file>src/main/resources/logs/application.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>src/main/resources/logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -16,7 +16,7 @@
         <file>src/main/resources/logs/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>src/main/resources/logs/error.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -30,7 +30,7 @@
         <file>src/main/resources/logs/debug.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>logs/debug.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>src/main/resources/logs/debug.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>

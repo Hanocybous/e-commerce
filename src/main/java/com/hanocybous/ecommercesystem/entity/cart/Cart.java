@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,9 +22,12 @@ public final class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     @OneToMany
     @JoinColumn(name = "cart_id")
-    private Collection<Product> products;
+    private List<Product> products;
+    @Setter
+    @Getter
     private Long userId;
     private Double totalPrice;
     private Double totalDiscount;
@@ -32,36 +35,64 @@ public final class Cart {
     private Double totalAmount;
     private Long productId;
 
-    public Cart(Collection<Product> products) {
+    public Cart(Long id, List<Product> products, Long userId, Double totalPrice, Double totalDiscount, Double totalShipping, Double totalAmount) {
+        this.id = id;
+        this.products = products;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.totalDiscount = totalDiscount;
+        this.totalShipping = totalShipping;
+        this.totalAmount = totalAmount;
+    }
+
+    public Cart(Long id, List<Product> products, Long userId, Double totalPrice, Double totalDiscount, Double totalShipping) {
+        this.id = id;
+        this.products = products;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.totalDiscount = totalDiscount;
+        this.totalShipping = totalShipping;
+    }
+
+    public Cart(Long id, List<Product> products, Long userId, Double totalPrice, Double totalDiscount) {
+        this.id = id;
+        this.products = products;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.totalDiscount = totalDiscount;
+    }
+
+    public Cart(Long id, List<Product> products, Long userId, Double totalPrice) {
+        this.id = id;
+        this.products = products;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+    }
+
+    public Cart(List<Product> products) {
         this.products = products;
     }
 
     public void addProduct(@NotNull Product product) {
-        if (products.contains(product)) {
-            products.stream()
-                    .filter(p -> p.equals(product))
-                    .findFirst()
-                    .get()
-                    .setQuantity(product.getQuantity() + 1);
-        } else {
+        // Check for null list
+        if (products != null) {
             products.add(product);
+        }
+        else {
+            throw new NullPointerException("Product list is null");
         }
     }
 
     public void removeProduct(@NotNull Product product) {
-        if (products.contains(product)) {
-            products.stream()
-                    .filter(p -> p.equals(product))
-                    .findFirst()
-                    .get()
-                    .setQuantity(product.getQuantity() - 1);
-        } else {
+        if (products != null) {
             products.remove(product);
         }
     }
 
     public void clearCart() {
-        products.clear();
+       if (products != null) {
+           products.clear();
+       }
     }
 
     private double calculateTotalPrice() {
@@ -122,65 +153,11 @@ public final class Cart {
 
     @Override
     public int hashCode() {
-        return products.hashCode();
-    }
-
-    //getters and setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Collection<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Collection<Product> products) {
-        this.products = products;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public Double getTotalDiscount() {
-        return totalDiscount;
-    }
-
-    public void setTotalDiscount(Double totalDiscount) {
-        this.totalDiscount = totalDiscount;
-    }
-
-    public Double getTotalShipping() {
-        return totalShipping;
-    }
-
-    public void setTotalShipping(Double totalShipping) {
-        this.totalShipping = totalShipping;
-    }
-
-    public Double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Double totalAmount) {
-        this.totalAmount = totalAmount;
+        int result = 31;
+        for (Product product : products) {
+            result = 31 * result + product.hashCode();
+        }
+        return result;
     }
 
 }

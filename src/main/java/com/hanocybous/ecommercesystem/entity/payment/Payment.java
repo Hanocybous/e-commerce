@@ -54,4 +54,13 @@ public class Payment {
         this.EOrder.setId(orderId);
     }
 
+    // get order total amount
+    public Double getOrderTotalAmount() {
+        return EOrder.getTotalAmount();
+    }
+
+    public void setOrderTotalAmount(Double amount) {
+        EOrder.setTotalAmount(amount);
+    }
+
 }

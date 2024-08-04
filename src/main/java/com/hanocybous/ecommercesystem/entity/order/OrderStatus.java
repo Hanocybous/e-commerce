@@ -1,7 +1,9 @@
 package com.hanocybous.ecommercesystem.entity.order;
 
+import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
+@Getter
 public enum OrderStatus {
 
     PENDING("Pending"),
@@ -16,10 +18,6 @@ public enum OrderStatus {
         this.displayValue = displayValue;
     }
 
-    public String getDisplayValue() {
-        return displayValue;
-    }
-
     public static @Nullable OrderStatus fromString(String text) {
         for (OrderStatus orderStatus : OrderStatus.values()) {
             if (orderStatus.displayValue.equalsIgnoreCase(text)) {
@@ -29,4 +27,7 @@ public enum OrderStatus {
         return null;
     }
 
+    public OrderStatus getStatus() {
+        return this;
+    }
 }
