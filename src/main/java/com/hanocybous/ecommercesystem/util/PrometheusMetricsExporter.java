@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.logging.Logger;
 
 @Component
 public class PrometheusMetricsExporter {
@@ -30,7 +31,10 @@ public class PrometheusMetricsExporter {
                     StandardOpenOption.TRUNCATE_EXISTING
             );
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getLogger(
+                    PrometheusMetricsExporter
+                            .class
+                            .getName()).severe("Failed to write metrics to file");
         }
     }
 }

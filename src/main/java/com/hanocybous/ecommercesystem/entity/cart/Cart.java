@@ -73,6 +73,11 @@ public final class Cart {
         this.products = products;
     }
 
+    public <E> Cart(Long id, List<Product> products) {
+        this.id = id;
+        this.products = products;
+    }
+
     public void addProduct(@NotNull Product product) {
         // Check for null list
         if (products != null) {

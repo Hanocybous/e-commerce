@@ -2,10 +2,15 @@ package com.hanocybous.ecommercesystem.entity.user;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.*;
 
+@RunWith(JUnit4.class)
+@FixMethodOrder(value = org.junit.runners.MethodSorters.NAME_ASCENDING)
 public class AdminTest {
 
     private Admin admin;

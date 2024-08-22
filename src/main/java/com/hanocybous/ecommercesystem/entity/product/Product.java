@@ -68,6 +68,22 @@ public final class Product {
         this.quantity = quantity;
     }
 
+    public Product(Long id,
+                   String name,
+                   double price,
+                   int quantity,
+                   double totalDiscount,
+                   double totalTax,
+                   String description) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.totalDiscount = totalDiscount;
+        this.totalTax = totalTax;
+        this.description = description;
+    }
+
     public boolean isAvailable() {
         return quantity > 0;
     }
